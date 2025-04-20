@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useUserData from "@/lib/db/userData";
 import { ShimmerButton } from "./ui/tailwindcss-buttons";
-import { transactions } from '../../lib/db/schema';
+import { transactions } from "../../lib/db/schema";
 
 export default function Navbar() {
   const { userData } = useUserData();
@@ -38,7 +38,7 @@ export default function Navbar() {
               priority
             />
           </Link>
-        
+
           <div className="hidden md:block">
             <nav className="flex flex-wrap items-center text-base justify-center space-x-10  text-[16px] font-be">
               <Link href={"/"} className=" hover:text-white/80">
@@ -54,11 +54,11 @@ export default function Navbar() {
               <Link href={"/contact"} className=" hover:text-white/80">
                 Contact Us
               </Link>
-              <div className={`hidden  ${userData ? "md:flex" : "md:hidden"} flex-wrap space-x-4 mr-10`}>
+              {/* <div className={`hidden  ${userData ? "md:flex" : "md:hidden"} flex-wrap space-x-4 mr-10`}>
             <Link href={"/transactions"} className=" hover:text-white/80">
               Transactions
             </Link>
-            </div>
+            </div> */}
             </nav>
           </div>
           <div className="">
@@ -67,10 +67,7 @@ export default function Navbar() {
                 userData ? "md:flex" : "md:hidden"
               } flex-wrap space-x-4 mr-10`}
             >
-              <ShimmerButton
-                onClick={() => handleRoute("dashboards")}
-                
-              >
+              <ShimmerButton onClick={() => handleRoute("dashboards")}>
                 Dashboard
               </ShimmerButton>
             </div>
@@ -79,21 +76,13 @@ export default function Navbar() {
                 userData ? "md:hidden" : "md:flex"
               } flex-wrap space-x-4 mr-10`}
             >
-              <ShimmerButton
-                onClick={() => handleRoute("login")}
-                
-              >
+              <ShimmerButton onClick={() => handleRoute("login")}>
                 Login
               </ShimmerButton>
-              <ShimmerButton
-                onClick={() => handleRoute("signup")}
-              >
+              <ShimmerButton onClick={() => handleRoute("signup")}>
                 Sign Up
               </ShimmerButton>
-              <ShimmerButton
-                onClick={() => handleRoute("login")}
-                
-              >
+              <ShimmerButton onClick={() => handleRoute("login")}>
                 Schedule Interview
               </ShimmerButton>
             </div>
@@ -150,39 +139,27 @@ export default function Navbar() {
             >
               Contact
             </Link>
-            <div className={`${userData ? "flex" : "hidden"}  space-x-4`}>
-            <Link
-              href="/transactions"
-              className="text-white hover:font-extrabold hover:text-gray-300 block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Transactions
-            </Link>
-            </div>
-            <div className={`${userData ? "flex" : "hidden"}  space-x-4`}>
-              <ShimmerButton
-                onClick={() => handleRoute("dashboards")}
-                
+            {/* <div className={`${userData ? "flex" : "hidden"}  space-x-4`}>
+              <Link
+                href="/transactions"
+                className="text-white hover:font-extrabold hover:text-gray-300 block px-3 py-2 rounded-md text-base font-medium"
               >
+                Transactions
+              </Link>
+            </div> */}
+            <div className={`${userData ? "flex" : "hidden"}  space-x-4`}>
+              <ShimmerButton onClick={() => handleRoute("dashboards")}>
                 Dashboard
               </ShimmerButton>
             </div>
             <div className={`${userData ? "hidden" : "flex"}  space-x-4`}>
-              <ShimmerButton
-                onClick={() => handleRoute("login")}
-                
-              >
+              <ShimmerButton onClick={() => handleRoute("login")}>
                 Login
               </ShimmerButton>
-              <ShimmerButton
-                onClick={() => handleRoute("signup")}
-               
-              >
+              <ShimmerButton onClick={() => handleRoute("signup")}>
                 Sign Up
               </ShimmerButton>
-              <ShimmerButton
-                onClick={() => handleRoute("login")}
-                
-              >
+              <ShimmerButton onClick={() => handleRoute("login")}>
                 Schedule Interview
               </ShimmerButton>
             </div>

@@ -140,7 +140,11 @@ const SideBar = ({ slug }: { slug: string }) => {
             {/* Transaction tab start */}
             <button
               onClick={() => onClick("transactions")}
-              className="w-full md:h-full h-16 bg-transparent hover:rounded-md hover:text-white text-black flex items-center justify-center px-2 py-3 hover:bg-[#4765FF]"
+              className={`md:w-full w-16 h-16 md:h-full  ${
+                slug === "transactions"
+                  ? "bg-[#4765FF] rounded-md text-white"
+                  : "bg-transparent hover:rounded-md hover:text-white text-black"
+              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]   `}
             >
               <CreditCard className="mr-2" size={24} />
               <span className="hidden md:inline">Transactions</span>
