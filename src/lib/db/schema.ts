@@ -55,8 +55,6 @@ export const experienceTable = pgTable("experience", {
   image: text("image"),
 });
 
-
-
 export const serviceTable = pgTable("service", {
   id: serial("id").primaryKey(),
   service: varchar("service").notNull(),
@@ -66,7 +64,6 @@ export const serviceTable = pgTable("service", {
   }),
   category: text("category")
 });
-
 
 export const interviewTable = pgTable("interview", {
   id: text("id").primaryKey(),
@@ -99,7 +96,6 @@ export const feedbackTable = pgTable("feedback", {
     onDelete: "cascade",
   }),
 });
-
 
 export const userTable2 = pgTable("users2", {
   id: varchar("id", { length: 50 }).notNull().unique(),

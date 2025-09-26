@@ -3,6 +3,7 @@ import {
   db,
   applicationsTable,
   userTable2,
+  hrTableNew,
   skillTable,
   qualificationTable,
   verifyTable,
@@ -31,6 +32,45 @@ export async function POST(req: NextRequest) {
         { success: false, message: "User not found" },
         { status: 404 }
       );
+    }
+     // 4. Check HR profile completeness
+    const userProfile = await db
+      .select()
+      .from(hrTableNew)
+      .where(eq(hrTableNew.user_id, user_id));
+
+    if (!userProfile.length) {
+      return NextResponse.json(
+        { success: false, message: "User profile not found. Please complete your profile." },
+        { status: 400 }
+      );
+    }
+
+    const hr = userProfile[0];
+
+    // Required fields in hrTableNew
+    const requiredFields: (keyof typeof hr)[] = [
+      "fname",
+      "lname",
+      "about",
+      "father_name",
+      "dob",
+      "gender",
+      "martial_status",
+      "nic",
+      "nationality",
+      "religion",
+      "phone",
+      "designation",
+    ];
+
+    for (const field of requiredFields) {
+      if (!hr[field] || hr[field]?.toString().trim() === "") {
+        return NextResponse.json(
+          { success: false, message: `Missing required field: ${field}` },
+          { status: 400 }
+        );
+      }
     }
 
     // 2. Check skills
