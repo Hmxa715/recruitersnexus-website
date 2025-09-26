@@ -226,3 +226,10 @@ export const transactionHistory = pgTable('transaction_history', {
   requestBody: jsonb('request_body'),
   responseBody: jsonb('response_body')
 });
+
+export const applicationsTable = pgTable("applications", {
+  id: serial("id").primaryKey(),
+  user_id: integer("user_id").notNull(),
+  job_id: integer("job_id").notNull(),
+  applied_at: timestamp("applied_at").defaultNow(),
+});

@@ -240,6 +240,36 @@ const JobUser = () => {
     setShowSkillModal(true);
     setskillId(id);
   };
+  const handleApply = async (jobId: number) => {
+  if (!userData) {
+    toast.error("You must be logged in to apply");
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/apply", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: userData.id, // from useUserData()
+        job_id: jobId,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      toast.error(data.message || "Something went wrong");
+      return;
+    }
+
+    toast.success("Application submitted!");
+    router.push(`/scheduleInterview?id=${userData.id}`);
+  } catch (err) {
+    console.error(err);
+    toast.error("Server error. Try again later.");
+  }
+};
 
   const formatDateTime = (dateTimeString: any) => {
     const optionsDate: any = { year: "numeric", month: "long", day: "numeric" };
@@ -372,7 +402,7 @@ const JobUser = () => {
       //console.log(error);
     }
   }
-
+  
   const featureCatgory = [
     { card: "bg-[#FFFFFF] text-[#333333] ", label: "none" },
     { card: "bg-[#242E49] text-[#FFFFFF]", label: "pro" },
@@ -634,11 +664,7 @@ const JobUser = () => {
 
                               <div className="flex lg:justify-end items-end my-2 lg:my-0">
                                 <Button
-                                  onClick={() =>
-                                    router.push(
-                                      `/scheduleInterview?id=${item?.user_id}`
-                                    )
-                                  }
+                                  onClick={() => handleApply(item.id)}
                                   className="bg-[#4765FF] hover:bg-[#4765FF]/80  h-11 rounded-lg "
                                 >
                                   Apply Now
@@ -646,8 +672,7 @@ const JobUser = () => {
                               </div>
                             </div>
                           </div>
-
-                                                 </div>
+                          </div>
 
                       </div>
                       
