@@ -8,7 +8,6 @@ import {
   qualificationTable,
   verifyTable,
   JobSkillTable,
-  jobTable,
 } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 
@@ -92,31 +91,39 @@ export async function POST(req: NextRequest) {
     const jobSkills = await db
       .select()
       .from(JobSkillTable)
-      .where(eq(JobSkillTable.user_id, job_id)); // here `user_id` in JobSkillTable is actually job_id
-    if (!jobSkills.length) {
-      return NextResponse.json(
-        { success: false, message: "This job has no skill requirements defined." },
-        { status: 400 }
-      );
+      .where(eq(JobSkillTable.user_id, job_id)); // here `user_id` in JobSkillTable = job_id
+
+    let matchedSkills: string[] = [];
+
+    if (jobSkills.length) {
+      const userSkillSet = new Set(
+        skills
+            .map((s) => s.skill?.toLowerCase().trim())
+            .filter((s): s is string => !!s) // remove undefined
+        );
+
+        const jobSkillSet = new Set(
+        jobSkills
+            .map((s) => s.skill?.toLowerCase().trim())
+            .filter((s): s is string => !!s)
+        );
+
+        matchedSkills = [...userSkillSet].filter((skill) => jobSkillSet.has(skill));
+
+      if (!matchedSkills.length) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "Your skills do not match the job requirements.",
+            requiredSkills: [...jobSkillSet],
+          },
+          { status: 400 }
+        );
+      }
     }
+    // else → no job skills → skip skill check
 
-    // 6. Check skill match
-    const userSkillSet = new Set(skills.map((s) => s.skill?.toLowerCase().trim()));
-    const jobSkillSet = new Set(jobSkills.map((s) => s.skill?.toLowerCase().trim()));
-    const matchedSkills = [...userSkillSet].filter((skill) => jobSkillSet.has(skill));
-
-    if (!matchedSkills.length) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Your skills do not match the job requirements.",
-          requiredSkills: [...jobSkillSet],
-        },
-        { status: 400 }
-      );
-    }
-
-    // 7. Check qualifications
+    // 6. Check qualifications
     const qualifications = await db
       .select()
       .from(qualificationTable)
@@ -128,7 +135,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 8. Insert into applications table
+    // 7. Insert into applications table
     const newApp = await db
       .insert(applicationsTable)
       .values({ user_id, job_id })
@@ -139,7 +146,7 @@ export async function POST(req: NextRequest) {
         success: true,
         message: "Application submitted successfully",
         data: newApp[0],
-        matchedSkills,
+        matchedSkills, // return empty [] if job had no skill requirements
       },
       { status: 201 }
     );
