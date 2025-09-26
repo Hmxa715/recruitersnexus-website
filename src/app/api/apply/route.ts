@@ -39,11 +39,25 @@ export async function POST(req: NextRequest) {
       .from(skillTable)
       .where(eq(skillTable.user_id, user_id));
 
+    if (!skills.length) {
+      return NextResponse.json(
+        { success: false, message: "At least one skill is required before applying." },
+        { status: 400 }
+      );
+    }
+
     // 3. Check qualifications
     const qualifications = await db
       .select()
       .from(qualificationTable)
       .where(eq(qualificationTable.user_id, user_id));
+
+    if (!qualifications.length) {
+      return NextResponse.json(
+        { success: false, message: "At least one qualification is required before applying." },
+        { status: 400 }
+      );
+    }
 
     // 4. Check verification
     const verify = await db
@@ -53,16 +67,9 @@ export async function POST(req: NextRequest) {
 
     const isVerified = verify.length && verify[0].verified === "verified";
 
-    // ---- Profile completeness rules ----
-    if (
-      !user[0].username ||
-      !user[0].email ||
-      !skills.length ||
-      !qualifications.length ||
-      !isVerified
-    ) {
+    if (!isVerified) {
       return NextResponse.json(
-        { success: false, message: "Please complete your profile before applying." },
+        { success: false, message: "Your account must be verified before applying." },
         { status: 400 }
       );
     }
@@ -74,7 +81,7 @@ export async function POST(req: NextRequest) {
       .returning();
 
     return NextResponse.json(
-      { success: true, message: "Application submitted", data: newApp[0] },
+      { success: true, message: "Application submitted successfully", data: newApp[0] },
       { status: 201 }
     );
   } catch (error: any) {
