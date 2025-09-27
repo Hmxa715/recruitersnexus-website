@@ -7,7 +7,7 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { AiOutlineTag } from "react-icons/ai";
 import { PiMedal } from "react-icons/pi";
 import { Star } from "lucide-react";
-import { IoBriefcaseOutline } from "react-icons/io5";
+import { IoBriefcaseOutline, IoDocumentTextOutline } from "react-icons/io5";
 import MainUsers from "@/lib/db/mainUsers";
 import { userData } from "@/data/page-data";
 import Image from "next/image";
@@ -273,7 +273,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                   : "hidden"
               } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]`}
             >
-              <IoBriefcaseOutline className="mx-4" size={24} />
+              <IoDocumentTextOutline className="mx-4" size={24} />
               <span className="hidden md:block">Applications</span>
             </button>
           </div>
