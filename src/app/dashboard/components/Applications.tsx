@@ -1,9 +1,19 @@
 "use client";
 import React, { useEffect, useState, useMemo } from "react";
+import {
+  FaUsers,
+  FaClock,
+  FaCheckCircle,
+  FaTimesCircle,
+} from "react-icons/fa";
+import useUserData from "@/lib/db/userData"; // assuming this already returns user info
 
 interface Application {
   id: number;
   job_id: number;
+  job_title: string;
+  job_location: string;
+  job_description: string;
   user_id: number;
   applied_at: string;
   status: string;
@@ -11,20 +21,16 @@ interface Application {
   email: string;
 }
 
-interface UserData {
-  role: "hr" | "admin" | string;
-}
+const Applications: React.FC = () => {
+  const { userData } = useUserData(); // directly get user info
+  const role = userData?.role ?? "admin"; // fallback to admin if role not found
 
-const Applications: React.FC<{ userData?: UserData }> = ({ userData }) => {
   const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedJob, setSelectedJob] = useState<number | "all">("all");
-
+  const [selectedJob, setSelectedJob] = useState<string | "all">("all");
   const [page, setPage] = useState(1);
-  const perPage = 20;
-
-  const role = userData?.role ?? "admin"; // fallback
+  const perPage = 5;
 
   useEffect(() => {
     const fetchApplications = async () => {
@@ -49,8 +55,14 @@ const Applications: React.FC<{ userData?: UserData }> = ({ userData }) => {
     fetchApplications();
   }, []);
 
-  // Update status (Shortlist / Reject)
+  // Update status
   const updateStatus = async (id: number, status: "shortlisted" | "rejected") => {
+    if (
+      status === "rejected" &&
+      !confirm("Are you sure you want to reject this application?")
+    ) {
+      return;
+    }
     try {
       const res = await fetch(`/api/applications/${id}`, {
         method: "PATCH",
@@ -70,8 +82,8 @@ const Applications: React.FC<{ userData?: UserData }> = ({ userData }) => {
 
   // Job filter options
   const jobOptions = useMemo(() => {
-    const ids = Array.from(new Set(applications.map((a) => a.job_id)));
-    return ids.sort((a, b) => a - b);
+    const titles = Array.from(new Set(applications.map((a) => a.job_title)));
+    return titles.sort();
   }, [applications]);
 
   // Apply filters
@@ -81,7 +93,7 @@ const Applications: React.FC<{ userData?: UserData }> = ({ userData }) => {
       apps = apps.filter((a) => a.status !== "rejected");
     }
     if (selectedJob !== "all") {
-      apps = apps.filter((a) => a.job_id === selectedJob);
+      apps = apps.filter((a) => a.job_title === selectedJob);
     }
     return apps;
   }, [applications, role, selectedJob]);
@@ -118,26 +130,38 @@ const Applications: React.FC<{ userData?: UserData }> = ({ userData }) => {
 
   return (
     <div className="p-4 space-y-6">
-      <h1 className="text-xl font-bold">Applications</h1>
+      <h1 className="text-2xl font-bold">Applications</h1>
 
-      {/* Summary counts */}
-      <div className="flex flex-wrap gap-4">
-        <div className="bg-white shadow rounded p-4">
-          <p className="text-gray-500 text-sm">Total</p>
-          <p className="text-lg font-semibold">{counts.total}</p>
+      {/* Summary cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl p-4 flex items-center gap-3 shadow-md">
+          <FaUsers size={28} />
+          <div>
+            <p className="text-sm">Total</p>
+            <p className="text-xl font-bold">{counts.total}</p>
+          </div>
         </div>
-        <div className="bg-white shadow rounded p-4">
-          <p className="text-gray-500 text-sm">Pending</p>
-          <p className="text-lg font-semibold">{counts.pending}</p>
+        <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white rounded-xl p-4 flex items-center gap-3 shadow-md">
+          <FaClock size={28} />
+          <div>
+            <p className="text-sm">Pending</p>
+            <p className="text-xl font-bold">{counts.pending}</p>
+          </div>
         </div>
-        <div className="bg-white shadow rounded p-4">
-          <p className="text-gray-500 text-sm">Shortlisted</p>
-          <p className="text-lg font-semibold">{counts.shortlisted}</p>
+        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl p-4 flex items-center gap-3 shadow-md">
+          <FaCheckCircle size={28} />
+          <div>
+            <p className="text-sm">Shortlisted</p>
+            <p className="text-xl font-bold">{counts.shortlisted}</p>
+          </div>
         </div>
         {role === "admin" && (
-          <div className="bg-white shadow rounded p-4">
-            <p className="text-gray-500 text-sm">Rejected</p>
-            <p className="text-lg font-semibold">{counts.rejected}</p>
+          <div className="bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl p-4 flex items-center gap-3 shadow-md">
+            <FaTimesCircle size={28} />
+            <div>
+              <p className="text-sm">Rejected</p>
+              <p className="text-xl font-bold">{counts.rejected}</p>
+            </div>
           </div>
         )}
       </div>
@@ -149,14 +173,12 @@ const Applications: React.FC<{ userData?: UserData }> = ({ userData }) => {
           <select
             className="border px-2 py-1 rounded"
             value={selectedJob}
-            onChange={(e) =>
-              setSelectedJob(e.target.value === "all" ? "all" : parseInt(e.target.value))
-            }
+            onChange={(e) => setSelectedJob(e.target.value)}
           >
             <option value="all">All Jobs</option>
-            {jobOptions.map((id) => (
-              <option key={id} value={id}>
-                Job {id}
+            {jobOptions.map((title) => (
+              <option key={title} value={title}>
+                {title}
               </option>
             ))}
           </select>
@@ -165,11 +187,11 @@ const Applications: React.FC<{ userData?: UserData }> = ({ userData }) => {
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse border border-gray-300 bg-white">
+        <table className="w-full border-collapse border border-gray-300 bg-white rounded-lg shadow">
           <thead>
             <tr className="bg-gray-100">
               <th className="border border-gray-300 p-2 text-left">ID</th>
-              <th className="border border-gray-300 p-2 text-left">Job ID</th>
+              <th className="border border-gray-300 p-2 text-left">Job</th>
               <th className="border border-gray-300 p-2 text-left">User</th>
               <th className="border border-gray-300 p-2 text-left">Email</th>
               <th className="border border-gray-300 p-2 text-left">Applied At</th>
@@ -186,26 +208,28 @@ const Applications: React.FC<{ userData?: UserData }> = ({ userData }) => {
               ? paginatedApplications.map((app) => (
                   <tr key={app.id} className="hover:bg-gray-50">
                     <td className="border border-gray-300 p-2">{app.id}</td>
-                    <td className="border border-gray-300 p-2">{app.job_id}</td>
+                    <td className="border border-gray-300 p-2">{app.job_title}</td>
                     <td className="border border-gray-300 p-2">{app.username}</td>
                     <td className="border border-gray-300 p-2">{app.email}</td>
                     <td className="border border-gray-300 p-2">
                       {new Date(app.applied_at).toLocaleString()}
                     </td>
-                    <td className="border border-gray-300 p-2">{app.status}</td>
+                    <td className="border border-gray-300 p-2 capitalize">
+                      {app.status}
+                    </td>
                     {role === "hr" && (
                       <td className="border border-gray-300 p-2 space-x-2">
                         {app.status === "pending" ? (
                           <>
                             <button
                               onClick={() => updateStatus(app.id, "shortlisted")}
-                              className="px-2 py-1 bg-green-500 text-white rounded text-sm"
+                              className="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600"
                             >
                               Shortlist
                             </button>
                             <button
                               onClick={() => updateStatus(app.id, "rejected")}
-                              className="px-2 py-1 bg-red-500 text-white rounded text-sm"
+                              className="px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600"
                             >
                               Reject
                             </button>

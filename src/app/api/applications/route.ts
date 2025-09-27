@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db, applicationsTable, userTable2 } from "@/lib/db/schema";
+import { db, applicationsTable, jobTable, userTable2 } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 
 export async function GET() {
@@ -8,6 +8,9 @@ export async function GET() {
       .select({
         id: applicationsTable.id,
         job_id: applicationsTable.job_id,
+        job_title: jobTable.title,
+        job_location: jobTable.location,
+        job_description: jobTable.description,
         user_id: applicationsTable.user_id,
         applied_at: applicationsTable.applied_at,
         status: applicationsTable.status,
@@ -15,7 +18,8 @@ export async function GET() {
         email: userTable2.email,
       })
       .from(applicationsTable)
-      .leftJoin(userTable2, eq(applicationsTable.user_id, userTable2.id));
+      .leftJoin(userTable2, eq(applicationsTable.user_id, userTable2.id))
+      .leftJoin(jobTable, eq(applicationsTable.job_id, jobTable.id));
 
     return NextResponse.json({ success: true, data: applications });
   } catch (err: any) {
