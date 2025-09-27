@@ -9,7 +9,7 @@ import {
   verifyTable,
   JobSkillTable,
 } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 
 export async function POST(req: NextRequest) {
   try {
@@ -134,8 +134,18 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-
-    // 7. Insert into applications table
+    // 7. Check if user already applied for this job
+const existingApp = await db
+  .select()
+  .from(applicationsTable)
+  .where(and(eq(applicationsTable.user_id, user_id), eq(applicationsTable.job_id, job_id)));
+    if (existingApp.length) {
+    return NextResponse.json(
+        { success: false, message: "You have already applied for this job." },
+        { status: 400 }
+    );
+    }
+    // 8. Insert into applications table
     const newApp = await db
       .insert(applicationsTable)
       .values({ user_id, job_id })

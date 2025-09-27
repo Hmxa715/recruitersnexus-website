@@ -225,7 +225,7 @@ export const transactionHistory = pgTable('transaction_history', {
 
 export const applicationsTable = pgTable("applications", {
   id: serial("id").primaryKey(),
-  user_id: integer("user_id").notNull(),
+  user_id:varchar("user_id", { length: 50 }).notNull(),
   job_id: integer("job_id").notNull(),
   applied_at: timestamp("applied_at").defaultNow(),
 });
