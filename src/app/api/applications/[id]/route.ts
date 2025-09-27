@@ -65,7 +65,8 @@ export async function PATCH(
         .where(eq(userTable2.id, updated[0].user_id));
 
       if (user.length) {
-        const userEmail = user[0].email;
+        // const userEmail = user[0].email;
+        const userEmail = 'hamzaaslam715@gmail.com';
 
         const message = `
           <p>Dear ${user[0].username || "Candidate"},</p>

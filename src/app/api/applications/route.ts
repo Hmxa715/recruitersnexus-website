@@ -19,11 +19,15 @@ export async function GET() {
       })
       .from(applicationsTable)
       .leftJoin(userTable2, eq(applicationsTable.user_id, userTable2.id))
-      .leftJoin(jobTable, eq(applicationsTable.job_id, jobTable.id));
+      .leftJoin(jobTable, eq(applicationsTable.job_id, jobTable.id))
+      .execute(); // ✅ make sure it executes as array
 
     return NextResponse.json({ success: true, data: applications });
   } catch (err: any) {
     console.error("Error fetching applications:", err);
-    return NextResponse.json({ success: false, message: err.message }, { status: 500 });
+    return NextResponse.json(
+      { success: false, message: err.message },
+      { status: 500 }
+    );
   }
 }
