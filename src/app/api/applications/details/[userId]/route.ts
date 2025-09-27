@@ -7,8 +7,9 @@ export async function GET(
   { params }: { params: { userId: string } }
 ) {
   try {
-    const userId = Number(params.userId);
-    if (isNaN(userId))
+    const userId = params.userId; // already a string
+
+    if (!userId)
       return NextResponse.json(
         { success: false, message: "Invalid userId" },
         { status: 400 }
@@ -18,17 +19,17 @@ export async function GET(
     const qualifications = await db
       .select()
       .from(qualificationTable)
-      .where(eq(qualificationTable.user_id, userId.toString()));
+      .where(eq(qualificationTable.user_id, userId));
 
     // Fetch experiences
     const experiences = await db
       .select()
       .from(experienceTable)
-      .where(eq(experienceTable.user_id, userId.toString()));
+      .where(eq(experienceTable.user_id, userId));
 
     return NextResponse.json({
       success: true,
-      data: { qualifications, experiences }
+      data: { qualifications, experiences },
     });
   } catch (err) {
     console.error(err);

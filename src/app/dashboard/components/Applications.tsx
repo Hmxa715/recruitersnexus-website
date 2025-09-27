@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState, useMemo } from "react";
 import { FaUsers, FaClock, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import useUserData from "@/lib/db/userData";
 
 interface Application {
   id: number;
@@ -20,7 +21,8 @@ interface Details {
   experiences: any[];
 }
 
-const Applications: React.FC<{ userData?: { role: string } }> = ({ userData }) => {
+const Applications: React.FC = () => {
+  const { userData } = useUserData(); // directly get user info
   const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,7 +31,7 @@ const Applications: React.FC<{ userData?: { role: string } }> = ({ userData }) =
   const [selectedApp, setSelectedApp] = useState<Application | null>(null);
   const [details, setDetails] = useState<Details | null>(null);
 
-  const perPage = 5;
+  const perPage = 10;
   const role = userData?.role ?? "admin"; // fallback role
 
   // Fetch applications
