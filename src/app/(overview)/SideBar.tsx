@@ -261,6 +261,21 @@ const SideBar = ({ slug }: { slug: string }) => {
               <IoBriefcaseOutline className="mx-4" size={24} />
               <span className="hidden md:block">Jobs Posting</span>
             </button>
+            <button
+              onClick={() => onClick("applications")}
+              className={`md:w-full w-16 h-16 md:h-full ${
+                slug === "applications"
+                  ? "bg-[#4765FF] rounded-md text-white"
+                  : "bg-transparent hover:rounded-md hover:text-white text-black"
+              } ${
+                userData?.role === "hr" || userData?.role === "admin"
+                  ? ""
+                  : "hidden"
+              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]`}
+            >
+              <IoBriefcaseOutline className="mx-4" size={24} />
+              <span className="hidden md:block">Applications</span>
+            </button>
           </div>
         </div>
       ) : (

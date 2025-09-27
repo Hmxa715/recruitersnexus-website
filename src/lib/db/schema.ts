@@ -227,5 +227,6 @@ export const applicationsTable = pgTable("applications", {
   id: serial("id").primaryKey(),
   user_id:varchar("user_id", { length: 50 }).notNull(),
   job_id: integer("job_id").notNull(),
+  status: varchar("status", { length: 20 }).default("pending"),
   applied_at: timestamp("applied_at").defaultNow(),
 });
