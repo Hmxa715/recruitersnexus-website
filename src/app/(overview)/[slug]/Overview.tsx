@@ -12,7 +12,7 @@ import ServiceInput from "@/app/subServices/ServiceInput";
 import { UnconductedHR } from "@/app/dashboard/components/UnconductedHR";
 import Interviews from "@/app/dashboard/components/Interviews";
 import Posting from "@/app/dashboard/components/Posting";
-import Applications from "@/app/dashboard/components/applications";
+import Applications from "@/app/dashboard/components/Applications";
 import Notifications from "@/app/dashboard/components/Notifications";
 import Setting from "@/app/dashboard/components/Setting";
 import JobUser from "@/app/dashboard/components/JobUser";
