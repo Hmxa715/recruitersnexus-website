@@ -72,8 +72,8 @@ export async function PATCH(
         .where(eq(jobTable.id, updated[0].job_id));
 
       if (user.length && job) {
-        const userEmail = "hamzaaslam715@gmail.com";
-        // const userEmail = user[0].email || "hamzaaslam715@gmail.com";
+        // const userEmail = "hamzaaslam715@gmail.com";
+        const userEmail = user[0].email || "hamzaaslam715@gmail.com";
         const userName = user[0].username || "Candidate";
         const jobTitle = job[0].title || "the job";
 
