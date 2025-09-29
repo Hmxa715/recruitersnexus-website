@@ -1,6 +1,15 @@
 "use client";
 import React, { useEffect, useState, useMemo } from "react";
-import { FaUsers, FaClock, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import {
+  FaUsers,
+  FaClock,
+  FaCheckCircle,
+  FaTimesCircle,
+  FaDownload,
+  FaCheck,
+  FaTimes,
+  FaEye
+} from "react-icons/fa";
 import useUserData from "@/lib/db/userData";
 
 interface Application {
@@ -44,7 +53,8 @@ const Applications: React.FC = () => {
         setLoading(true);
         const res = await fetch("/api/applications");
         const data = await res.json();
-        if (!data.success) throw new Error(data.message || "Failed to fetch applications");
+        if (!data.success)
+          throw new Error(data.message || "Failed to fetch applications");
         setAllApplications(data.data);
       } catch (err: any) {
         setError(err.message || "Something went wrong");
@@ -71,19 +81,29 @@ const Applications: React.FC = () => {
     setPage(1); // Reset page when filtering
   }, [allApplications, selectedJob, role]);
 
-  const updateStatus = async (id: number, status: "shortlisted" | "rejected") => {
-    if (status === "rejected" && !confirm("Are you sure you want to reject this application?")) return;
+  const updateStatus = async (
+    id: number,
+    status: "shortlisted" | "rejected"
+  ) => {
+    if (
+      status === "rejected" &&
+      !confirm("Are you sure you want to reject this application?")
+    )
+      return;
 
     try {
       const res = await fetch(`/api/applications/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status }),
+        body: JSON.stringify({ status })
       });
       const data = await res.json();
-      if (!data.success) throw new Error(data.message || "Failed to update status");
+      if (!data.success)
+        throw new Error(data.message || "Failed to update status");
 
-      setAllApplications((prev) => prev.map((a) => (a.id === id ? { ...a, status } : a)));
+      setAllApplications((prev) =>
+        prev.map((a) => (a.id === id ? { ...a, status } : a))
+      );
     } catch (err: any) {
       alert(err.message || "Failed to update status");
     }
@@ -93,7 +113,8 @@ const Applications: React.FC = () => {
     try {
       const res = await fetch(`/api/applications/details/${userId}`);
       const data = await res.json();
-      if (!data.success) throw new Error(data.message || "Failed to fetch details");
+      if (!data.success)
+        throw new Error(data.message || "Failed to fetch details");
       setDetails(data.data);
       setSelectedApp(allApplications.find((a) => a.user_id === userId) || null);
     } catch (err: any) {
@@ -109,18 +130,48 @@ const Applications: React.FC = () => {
 
   // Pagination
   const totalPages = Math.ceil(applications.length / perPage);
-  const paginatedApplications = applications.slice((page - 1) * perPage, page * perPage);
+  const paginatedApplications = applications.slice(
+    (page - 1) * perPage,
+    page * perPage
+  );
 
   // Counts
   const counts = useMemo(
     () => ({
       total: applications.length,
       pending: applications.filter((a) => a.status === "pending").length,
-      shortlisted: applications.filter((a) => a.status === "shortlisted").length,
-      rejected: applications.filter((a) => a.status === "rejected").length,
+      shortlisted: applications.filter((a) => a.status === "shortlisted")
+        .length,
+      rejected: applications.filter((a) => a.status === "rejected").length
     }),
     [applications]
   );
+
+  const handleExport = async (type: "all" | "shortlisted") => {
+    try {
+      const res = await fetch("/api/applications/export", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ type })
+      });
+
+      if (!res.ok) throw new Error("Failed to export file");
+
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `applications_${type}.xlsx`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Export error:", error);
+      alert("Failed to export file");
+    }
+  };
 
   return (
     <>
@@ -214,41 +265,74 @@ const Applications: React.FC = () => {
                       <td className="border p-2">{app.username}</td>
                       <td className="border p-2">{app.email}</td>
                       <td className="border p-2">
-                        {app.applied_at ? new Date(app.applied_at).toLocaleString() : "—"}
+                        {app.applied_at
+                          ? new Date(app.applied_at).toLocaleString()
+                          : "—"}
                       </td>
                       <td className="border p-2 capitalize">{app.status}</td>
-                      <td className="border p-2 space-x-2">
+                      <td className="border p-2 space-x-2 flex items-center gap-2">
+                        {/* HR can Shortlist / Reject */}
                         {role === "hr" && app.status === "pending" && (
                           <>
                             <button
-                              onClick={() => updateStatus(app.id, "shortlisted")}
-                              className="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600"
+                              onClick={() =>
+                                updateStatus(app.id, "shortlisted")
+                              }
+                              className="p-2 bg-green-100 text-green-600 rounded-full hover:bg-green-200"
+                              title="Shortlist Candidate"
                             >
-                              Shortlist
+                              <FaCheck />
                             </button>
                             <button
                               onClick={() => updateStatus(app.id, "rejected")}
-                              className="px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600"
+                              className="p-2 bg-red-100 text-red-600 rounded-full hover:bg-red-200"
+                              title="Reject Candidate"
                             >
-                              Reject
+                              <FaTimes />
                             </button>
                           </>
                         )}
 
+                        {/* HR & Admin can view details */}
                         {(role === "hr" || role === "admin") && (
                           <button
                             onClick={() => fetchDetails(app.user_id)}
-                            className="px-3 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600"
+                            className="p-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200"
+                            title="View Details"
                           >
-                            Details
+                            <FaEye />
                           </button>
+                        )}
+
+                        {/* Admin-only Export options */}
+                        {role === "admin" && (
+                          <div className="flex gap-2 ml-2">
+                            <button
+                              onClick={() => handleExport("all")}
+                              className="px-3 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700 inline-flex items-center gap-2"
+                              title="Download full backup of all applications"
+                            >
+                              <FaDownload /> All
+                            </button>
+
+                            <button
+                              onClick={() => handleExport("shortlisted")}
+                              className="px-3 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700 inline-flex items-center gap-2"
+                              title="Download shortlisted candidates only"
+                            >
+                              <FaDownload /> Shortlisted
+                            </button>
+                          </div>
                         )}
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={7} className="text-center p-4 text-gray-500 border">
+                    <td
+                      colSpan={7}
+                      className="text-center p-4 text-gray-500 border"
+                    >
                       No applications found
                     </td>
                   </tr>
@@ -262,7 +346,11 @@ const Applications: React.FC = () => {
             <button
               disabled={page === 1}
               onClick={() => setPage((p) => p - 1)}
-              className={`px-3 py-1 rounded border ${page === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-100"}`}
+              className={`px-3 py-1 rounded border ${
+                page === 1
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-gray-100"
+              }`}
             >
               Prev
             </button>
@@ -272,7 +360,11 @@ const Applications: React.FC = () => {
             <button
               disabled={page === totalPages || totalPages === 0}
               onClick={() => setPage((p) => p + 1)}
-              className={`px-3 py-1 rounded border ${page === totalPages || totalPages === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-100"}`}
+              className={`px-3 py-1 rounded border ${
+                page === totalPages || totalPages === 0
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-gray-100"
+              }`}
             >
               Next
             </button>

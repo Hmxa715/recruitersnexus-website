@@ -21,7 +21,7 @@ export async function GET() {
       .leftJoin(userTable2, eq(applicationsTable.user_id, userTable2.id))
       .leftJoin(jobTable, eq(applicationsTable.job_id, jobTable.id));
       // .execute(); // ✅ make sure it executes as array
-    console.log("Fetched Applications:", JSON.stringify(applications, null, 2));
+    // console.log("Fetched Applications:", JSON.stringify(applications, null, 2));
     return NextResponse.json({ success: true, data: applications });
   } catch (err: any) {
     console.error("Error fetching applications:", err);
