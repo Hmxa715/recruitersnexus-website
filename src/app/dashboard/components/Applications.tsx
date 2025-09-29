@@ -217,22 +217,48 @@ const Applications: React.FC = () => {
             )}
           </div>
 
-          {/* Job filter */}
+          {/* Job filter + Admin export in same row */}
           {jobOptions.length > 0 && (
-            <div>
-              <label className="text-sm font-medium mr-2">Filter by Job:</label>
-              <select
-                className="border px-2 py-1 rounded"
-                value={selectedJob}
-                onChange={(e) => setSelectedJob(e.target.value)}
-              >
-                <option value="all">All Jobs</option>
-                {jobOptions.map((title) => (
-                  <option key={title} value={title}>
-                    {title}
-                  </option>
-                ))}
-              </select>
+            <div className="flex items-center justify-between">
+              {/* Left: Job filter */}
+              <div>
+                <label className="text-sm font-medium mr-2">
+                  Filter by Job:
+                </label>
+                <select
+                  className="border px-2 py-1 rounded"
+                  value={selectedJob}
+                  onChange={(e) => setSelectedJob(e.target.value)}
+                >
+                  <option value="all">All Jobs</option>
+                  {jobOptions.map((title) => (
+                    <option key={title} value={title}>
+                      {title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Right: Admin-only Export buttons */}
+              {role === "admin" && (
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleExport("all")}
+                    className="px-3 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700 inline-flex items-center gap-2"
+                    title="Download full backup of all applications"
+                  >
+                    <FaDownload /> All
+                  </button>
+
+                  <button
+                    onClick={() => handleExport("shortlisted")}
+                    className="px-3 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700 inline-flex items-center gap-2"
+                    title="Download shortlisted candidates only"
+                  >
+                    <FaDownload /> Shortlisted
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
@@ -302,27 +328,6 @@ const Applications: React.FC = () => {
                           >
                             <FaEye />
                           </button>
-                        )}
-
-                        {/* Admin-only Export options */}
-                        {role === "admin" && (
-                          <div className="flex gap-2 ml-2">
-                            <button
-                              onClick={() => handleExport("all")}
-                              className="px-3 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700 inline-flex items-center gap-2"
-                              title="Download full backup of all applications"
-                            >
-                              <FaDownload /> All
-                            </button>
-
-                            <button
-                              onClick={() => handleExport("shortlisted")}
-                              className="px-3 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700 inline-flex items-center gap-2"
-                              title="Download shortlisted candidates only"
-                            >
-                              <FaDownload /> Shortlisted
-                            </button>
-                          </div>
                         )}
                       </td>
                     </tr>
