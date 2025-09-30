@@ -166,6 +166,16 @@ export default function Schedule({ hr_id, filterServices, allInterviews, filtere
       })
 
 
+      const resData = await res.json();
+
+      if (!res.ok || !resData.success) {
+      toast.error(resData.message || "Something went wrong while scheduling interview");
+      return;
+      }
+
+      // ✅ success case
+      toast.success(resData.message || "Interview scheduled successfully!");
+
       // alert("Schedule Request Send");
       toast.success("Schedule Request for Interview has been send!");
 
