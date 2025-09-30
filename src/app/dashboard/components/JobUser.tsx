@@ -260,7 +260,7 @@ const JobUser = () => {
 
     if (!res.ok) {
       if (data?.message === "You have already applied for this job.") {
-        toast.error((data?.message || "You have already applied") + " — Redirecting to schedule interview.");
+        toast.success((data?.message || "You have already applied") + " — Redirecting to schedule interview.");
         router.push(`/scheduleInterview?id=${userData.id}`);
         return;
       }
