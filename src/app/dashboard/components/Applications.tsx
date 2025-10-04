@@ -172,7 +172,20 @@ const Applications: React.FC = () => {
       alert("Failed to export file");
     }
   };
-
+  if (loading || !userData) {
+  return (
+    <div className="p-6 space-y-4 animate-pulse">
+      <div className="h-8 w-48 bg-gray-200 rounded"></div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} className="h-20 bg-gray-200 rounded"></div>
+        ))}
+      </div>
+      <div className="h-10 bg-gray-200 rounded w-full"></div>
+      <div className="h-64 bg-gray-200 rounded w-full"></div>
+    </div>
+  );
+}
   return (
     <>
       {role !== "hr" && role !== "admin" ? (
