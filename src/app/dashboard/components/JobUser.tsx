@@ -512,8 +512,8 @@ const JobUser = () => {
                     >
                       <div className="ml-4 space-y-4 w-full  lg:space-y-1 flex-grow">
                         <div className="flex flex-col space-y-4 w-full ">
-                          <div className="flex flex-col lg:flex-row  w-full  justify-between">
-                            <div className="flex flex-row  space-x-4 items-center">
+                          <div className="flex flex-col w-full justify-between">
+                            <div className="flex flex-row space-x-4 items-center">
                               <Avatar className="h-16 w-16">
                             
                                 <AvatarImage
@@ -596,11 +596,11 @@ const JobUser = () => {
                                   (feature: any) =>
                                     feature.label === item?.feature
                                 )[0]?.card
-                              }  lg:ml-20`}
+                              } `}
                             >
                               Skills:
                             </span>
-                            <div className="flex flex-wrap space-x-1 lg:ml-20">
+                            <div className="flex flex-wrap space-x-1">
                               {jobSkill
                                 ?.filter(
                                   (skill: any) => skill.user_id === item.id
@@ -624,7 +624,7 @@ const JobUser = () => {
                                 ))}
                             </div>
 
-                            <div className="lg:ml-20 flex flex-col space-y-1 w-full">
+                            <div className="flex flex-col space-y-1 w-full">
                               <span>Expiring On:</span>
                               <p
                                 className={`text-sm ${
@@ -632,7 +632,7 @@ const JobUser = () => {
                                     (feature: any) =>
                                       feature.label === item?.feature
                                   )[0]?.card
-                                } w-full lg:w-[80%] `}
+                                } w-full `}
                               >
                                 {formatDateTime(item?.expiration_date).date +
                                   " (" +
@@ -650,23 +650,23 @@ const JobUser = () => {
                                   (feature: any) =>
                                     feature.label === item?.feature
                                 )[0]?.card
-                              } lg:ml-20`}
+                              } `}
                             >
                               Job Description:
                             </span>
-                            <div className="flex flex-col lg:flex-row justify-between lg:ml-20">
+                            <div className="flex flex-col justify-between">
                               <p
                                 className={`text-sm ${
                                   featureJobDescription.filter(
                                     (feature: any) =>
                                       feature.label === item?.feature
                                   )[0]?.card
-                                } w-full lg:w-[80%] `}
+                                } w-full`}
                               >
                                 {item?.description}
                               </p>
 
-                              <div className="flex lg:justify-end items-end my-2 lg:my-0">
+                              <div className="flex lg:justify-end items-end my-4">
                                 <Button
                                   onClick={() => handleApply(item.id)}
                                   className="bg-[#4765FF] hover:bg-[#4765FF]/80  h-11 rounded-lg "

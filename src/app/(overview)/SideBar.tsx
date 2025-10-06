@@ -67,17 +67,17 @@ const SideBar = ({ slug }: { slug: string }) => {
 
               <div className="flex flex-col space-y-6 items-center">
                 <div className=" flex flex-col items-center">
-                  <h1 className="text-md md:text-2xl font-bold text-[#242E49] mt-6">
+                  <h1 className="text-md md:text-2xl font-bold text-white mt-6">
                     {userData?.username}
                   </h1>
-                  <span>{userData?.email}</span>
+                  <span className="text-white">{userData?.email}</span>
                 </div>
 
                 <div className=" flex flex-col items-left">
                   {userData?.role === "hr" && (
                     <span className="flex flex-col items-left space-x-3">
                       {" "}
-                      <span className="text-[#242E49] font-bold">
+                      <span className="text-white font-bold">
                         Profile Status:{" "}
                       </span>{" "}
                       <span className="flex self-start">
@@ -103,7 +103,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                 slug === "dashboards"
                   ? "bg-[#4765FF] rounded-md text-white"
                   : "bg-transparent hover:rounded-md hover:text-white text-black"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]   `}
+              } flex items-center text-white justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]   `}
             >
               <Home className="mx-4" size={24} />{" "}
               <span className="hidden md:block">Dashboard</span>
@@ -116,7 +116,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                   : "bg-transparent hover:rounded-md hover:text-white text-black"
               } ${
                 userData?.role === "admin" ? "hidden" : ""
-              }  flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]   `}
+              }  flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]   `}
             >
               <TfiMenuAlt className="mx-4" size={24} />{" "}
               <span className="hidden md:block">Interviews</span>
@@ -131,7 +131,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                 userData?.role === "user" || userData?.role === "admin"
                   ? ""
                   : "hidden"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]   `}
+              } flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]   `}
             >
               <AiOutlineTag className="mx-4" size={24} />{" "}
               <span className="hidden md:block">Explore</span>
@@ -144,7 +144,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                 slug === "transactions"
                   ? "bg-[#4765FF] rounded-md text-white"
                   : "bg-transparent hover:rounded-md hover:text-white text-black"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]   `}
+              } flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]   `}
             >
               <CreditCard className="mx-4" size={24} />
               <span className="hidden md:inline">Transactions</span>
@@ -159,7 +159,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                   : "bg-transparent hover:rounded-md hover:text-white text-black"
               } ${
                 userData?.role === "hr" ? "" : "hidden"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
+              } flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
             >
               <Star className="mx-4" size={24} />{" "}
               <span className="hidden md:block">Schedule Time</span>
@@ -172,7 +172,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                   : "bg-transparent hover:rounded-md hover:text-white text-black"
               } ${
                 userData?.role === "user" ? "" : "hidden"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]   `}
+              } flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]   `}
             >
               <PiMedal className="mx-4" size={24} />{" "}
               <span className="hidden md:block">Jobs</span>
@@ -185,7 +185,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                   : "bg-transparent hover:rounded-md hover:text-white text-black"
               } ${
                 userData?.role === "hr" ? "" : "hidden"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
+              } flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
             >
               {" "}
               <IoBriefcaseOutline className="mx-4" size={24} />{" "}
@@ -199,7 +199,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                   : "bg-transparent hover:rounded-md hover:text-white text-black"
               } ${
                 userData?.role === "admin" ? "" : "hidden"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
+              } flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
             >
               {" "}
               <User className="mx-4" size={24} />
@@ -213,7 +213,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                   : "bg-transparent hover:rounded-md hover:text-white text-black"
               } ${
                 userData?.role === "admin" ? "" : "hidden"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
+              } flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
             >
               {" "}
               <BadgeX className="mx-4" size={24} />
@@ -227,7 +227,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                   : "bg-transparent hover:rounded-md hover:text-white text-black"
               } ${
                 userData?.role === "admin" ? "" : "hidden"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
+              } flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
             >
               {" "}
               <BadgeCheck className="mx-4" size={24} />
@@ -241,7 +241,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                   : "bg-transparent hover:rounded-md hover:text-white text-black"
               } ${
                 userData?.role === "admin" ? "" : "hidden"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
+              } flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
             >
               {" "}
               <Flag className="mx-4" size={24} />
@@ -255,7 +255,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                   : "bg-transparent hover:rounded-md hover:text-white text-black"
               } ${
                 userData?.role === "admin" ? "" : "hidden"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
+              } flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]  `}
             >
               {" "}
               <IoBriefcaseOutline className="mx-4" size={24} />
@@ -271,7 +271,7 @@ const SideBar = ({ slug }: { slug: string }) => {
                 userData?.role === "hr" || userData?.role === "admin"
                   ? ""
                   : "hidden"
-              } flex items-center justify-center md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]`}
+              } flex items-center justify-center text-white md:justify-stretch self-center  px-0 md:px-2 py-0  md:py-3 hover:bg-[#4765FF]`}
             >
               <IoDocumentTextOutline className="mx-4" size={24} />
               <span className="hidden md:block">Applications</span>
