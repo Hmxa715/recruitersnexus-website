@@ -464,250 +464,166 @@ const JobUser = () => {
   // console.log("Current Items: ", currentItems);
 
   return (
-    <div className="mt-12 px-4 ">
-      {/* {userData ? ( */}
-      {screenLoading ? (
-        <SpinnerLoader />
-      ) : (
-        <>
-          <div>
-            <div className="w-full flex justify-between py-8">
-              <h1 className="font-bold  mb-0 px-4 font-nunito text-3xl text-black">
-                Jobs{" "}
-              </h1>
-             
-            </div>
+   <div className="mt-12 px-4">
+  {screenLoading ? (
+    <SpinnerLoader />
+  ) : (
+    <>
+      <div>
+        <div className="w-full flex justify-between py-8">
+          <h1 className="font-bold mb-0 px-4 font-nunito text-3xl text-black">
+            Jobs
+          </h1>
+        </div>
 
-          
+        {currentItems.length !== 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full font-be lg:px-4">
+            {currentItems
+              .filter((job: any) => {
+                const condition1 = job.is_approved === "approved";
+                const currentTime = new Date();
+                const expireDate = new Date(job?.expiration_date);
+                return (
+                  condition1 && currentTime.getTime() <= expireDate.getTime()
+                );
+              })
+              .sort((a: any, b: any) => {
+                if (a.feature === "pro" && b.feature === "none") return -1;
+                if (a.feature === "none" && b.feature === "pro") return 1;
+                return 0;
+              })
+              .map((item: any) => (
+                <div
+                  key={item.id}
+                  className={`${
+                    featureCatgory.find(
+                      (feature: any) => feature.label === item?.feature
+                    )?.card
+                  } flex flex-col justify-between rounded-lg p-4 shadow-md h-full min-h-[520px]`}
+                >
+                  {/* Card Main Content */}
+                  <div className="flex flex-col justify-between flex-grow space-y-4">
+                    {/* Header: Avatar + Organization */}
+                    <div className="flex items-center space-x-4">
+                      <Avatar className="h-16 w-16">
+                        <AvatarImage
+                          src={`${item?.image}` || "/camera.png"}
+                          alt={item?.organization}
+                        />
+                        <AvatarFallback>OM</AvatarFallback>
+                      </Avatar>
 
-            {currentItems.length !== 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full font-be overflow-x-hidden lg:px-4">
-                {currentItems
-                  .filter((job: any) => {
-                    const condition1 = job.is_approved === "approved";
-                    const currentTime = new Date();
-                    const expireDate = new Date(job?.expiration_date);
-                    return (
-                      condition1 &&
-                      currentTime.getTime() <= expireDate.getTime()
-                    );
-                  })
-                  .sort((a: any, b: any) => {
-                    if (a.feature === "pro" && b.feature === "none") {
-                      return -1; // Place 'pro' before 'none'
-                    } else if (a.feature === "none" && b.feature === "pro") {
-                      return 1; // Place 'none' after 'pro'
-                    } else {
-                      return 0; // Leave the order unchanged
-                    }
-                  })
-                  .map((item: any, index: number) => (
-                    <div
-                      key={item.id}
-                      className={` ${
-                        featureCatgory.filter(
-                          (feature: any) => feature.label === item?.feature
-                        )[0]?.card
-                      } flex flex-col space-y-4 items-start justify-between rounded-lg p-4 shadow-md `}
-                    >
-                      <div className="ml-4 space-y-4 w-full  lg:space-y-1 flex-grow">
-                        <div className="flex flex-col space-y-4 w-full ">
-                          <div className="flex flex-col w-full justify-between">
-                            <div className="flex flex-row space-x-4 items-center">
-                              <Avatar className="h-16 w-16">
-                            
-                                <AvatarImage
-                                  src={`${item?.image}` || "/camera.png"}
-                                />
-                                <AvatarFallback>OM</AvatarFallback>
-                              </Avatar>
-
-                              <div className="flex justify-center flex-col space-y-1">
-                                <h1 className="font-bold text-2xl font-nunito">
-                                  {item?.organization}
-                                </h1>
-                                <p
-                                  className={`${
-                                    featureJobDescription.filter(
-                                      (feature: any) =>
-                                        feature.label === item?.feature
-                                    )[0]?.card
-                                  } text-sm`}
-                                >
-                                  {item?.location}
-                                </p>
-                              </div>
-                            </div>
-
-                            <div className="flex mt-3 lg:mt-0 flex-row lg:flex-col lg:space-y-1 justify-start lg:justify-center">
-                              <span
-                                className={`${
-                                  featureTitleJob.filter(
-                                    (feature: any) =>
-                                      feature.label === item?.feature
-                                  )[0]?.card
-                                }`}
-                              >
-                                Designation:
-                              </span>
-                              <p className="mt-0 ml-2 lg:ml-0">{item?.title}</p>
-                            </div>
-
-                            <div className="flex mt-1 lg:mt-0 flex-row lg:flex-col lg:space-y-1 justify-start lg:justify-center">
-                              <span
-                                className={`${
-                                  featureTitleJob.filter(
-                                    (feature: any) =>
-                                      feature.label === item?.feature
-                                  )[0]?.card
-                                }`}
-                              >
-                                alary:
-                              </span>
-                              <p className="mt-0 ml-2 lg:ml-0">
-                                {item.salary_start}
-                              </p>
-                            </div>
-
-                            <div className="flex mt-1 lg:mt-0 flex-row lg:flex-col lg:space-y-1 justify-start lg:justify-center">
-                              <span
-                                className={`${
-                                  featureTitleJob.filter(
-                                    (feature: any) =>
-                                      feature.label === item?.feature
-                                  )[0]?.card
-                                }`}
-                              >
-                                Posted:
-                              </span>
-                              <p className="mt-0 ml-2 lg:ml-0">
-                                {getTimeDifferenceInWords(
-                                  item?.created_at,
-                                  currentTime
-                                )}
-                              </p>
-                            </div>
-                          </div>
-
-                          <div className="flex flex-col space-y-1 w-full  ">
-                            <span
-                              className={`${
-                                featureTitleJob.filter(
-                                  (feature: any) =>
-                                    feature.label === item?.feature
-                                )[0]?.card
-                              } `}
-                            >
-                              Skills:
-                            </span>
-                            <div className="flex flex-wrap space-x-1">
-                              {jobSkill
-                                ?.filter(
-                                  (skill: any) => skill.user_id === item.id
-                                )
-                                .map((itemSkill: any) => (
-                                  <div
-                                    key={itemSkill?.sid}
-                                    className="flex flex-row space-x-4  "
-                                  >
-                                    <div
-                                      className={`text-sm ${
-                                        featureSkillCategory.filter(
-                                          (feature: any) =>
-                                            feature.label === item?.feature
-                                        )[0]?.card
-                                      }  py-1 my-1 px-4 rounded-full flex w-full relative`}
-                                    >
-                                      <span>{itemSkill?.skill}</span>
-                                    </div>
-                                  </div>
-                                ))}
-                            </div>
-
-                            <div className="flex flex-col space-y-1 w-full">
-                              <span>Expiring On:</span>
-                              <p
-                                className={`text-sm ${
-                                  featureJobDescription.filter(
-                                    (feature: any) =>
-                                      feature.label === item?.feature
-                                  )[0]?.card
-                                } w-full `}
-                              >
-                                {formatDateTime(item?.expiration_date).date +
-                                  " (" +
-                                  formatDateTime(item?.expiration_date).time +
-                                  ")"}
-                              </p>
-                            </div>
-                          </div>
-
-                          
-                          <div className="flex flex-col space-y-1 w-full  ">
-                            <span
-                              className={`${
-                                featureTitleJob.filter(
-                                  (feature: any) =>
-                                    feature.label === item?.feature
-                                )[0]?.card
-                              } `}
-                            >
-                              Job Description:
-                            </span>
-                            <div className="flex flex-col justify-between">
-                              <p
-                                className={`text-sm ${
-                                  featureJobDescription.filter(
-                                    (feature: any) =>
-                                      feature.label === item?.feature
-                                  )[0]?.card
-                                } w-full`}
-                              >
-                                {item?.description}
-                              </p>
-
-                              <div className="flex lg:justify-end items-end my-4">
-                                <Button
-                                  onClick={() => handleApply(item.id)}
-                                  className="bg-[#4765FF] hover:bg-[#4765FF]/80  h-11 rounded-lg "
-                                >
-                                  Apply Now
-                                </Button>
-                              </div>
-                            </div>
-                          </div>
-                          </div>
-
+                      <div>
+                        <h1 className="font-bold text-2xl font-nunito">
+                          {item?.organization}
+                        </h1>
+                        <p
+                          className={`${
+                            featureJobDescription.find(
+                              (feature: any) =>
+                                feature.label === item?.feature
+                            )?.card
+                          } text-sm`}
+                        >
+                          {item?.location}
+                        </p>
                       </div>
-                      
                     </div>
-                  ))}
-              </div>
-            ) : (
-              <div className="flex w-full h-screen justify-center items-start">
-                <div className="flex bg-white w-[400px] h-[200px] justify-center rounded-lg shadow-md items-center">
-                  {" "}
-                  <h1 className="font-nunito font-bold text-3xl">
-                    loading...
-                  </h1>
+
+                    {/* 3 Column Info */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div>
+                        <span className="font-semibold">Designation:</span>
+                        <p>{item?.title}</p>
+                      </div>
+                      <div>
+                        <span className="font-semibold">Salary:</span>
+                        <p>{item.salary_start}</p>
+                      </div>
+                      <div>
+                        <span className="font-semibold">Posted:</span>
+                        <p>
+                          {getTimeDifferenceInWords(
+                            item?.created_at,
+                            new Date()
+                          )}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Skills */}
+                    <div>
+                      <span className="font-semibold">Skills:</span>
+                      <div className="flex flex-wrap gap-2 mt-1">
+                        {jobSkill
+                          ?.filter((skill: any) => skill.user_id === item.id)
+                          .map((itemSkill: any) => (
+                            <div
+                              key={itemSkill?.sid}
+                              className={`text-sm ${
+                                featureSkillCategory.find(
+                                  (f: any) => f.label === item?.feature
+                                )?.card
+                              } py-1 px-4 rounded-full`}
+                            >
+                              {itemSkill?.skill}
+                            </div>
+                          ))}
+                      </div>
+                    </div>
+
+                    {/* Expiring On */}
+                    <div>
+                      <span className="font-semibold">Expiring On:</span>
+                      <p className="text-sm">
+                        {formatDateTime(item?.expiration_date).date +
+                          " (" +
+                          formatDateTime(item?.expiration_date).time +
+                          ")"}
+                      </p>
+                    </div>
+
+                    {/* Description */}
+                    <div>
+                      <span className="font-semibold">Job Description:</span>
+                      <p className="text-sm mt-1">{item?.description}</p>
+                    </div>
+                  </div>
+
+                  {/* Button Row */}
+                  <div className="flex justify-end mt-4">
+                    <Button
+                      onClick={() => handleApply(item.id)}
+                      className="bg-[#4765FF] hover:bg-[#4765FF]/80 h-11 rounded-lg"
+                    >
+                      Apply Now
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            )}
-
-            {showJobModal && <JobModal onClose={closeJobModal} />}
+              ))}
           </div>
-
-          <div className="my-16">
-            <PaginationSection
-              totalItems={approvedJobs.length}
-              itemsPerPage={itemsPerPage}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-            />
+        ) : (
+          <div className="flex w-full h-screen justify-center items-start">
+            <div className="flex bg-white w-[400px] h-[200px] justify-center rounded-lg shadow-md items-center">
+              <h1 className="font-nunito font-bold text-3xl">Loading...</h1>
+            </div>
           </div>
-        </>
-      )}
-    </div>
+        )}
+
+        {showJobModal && <JobModal onClose={closeJobModal} />}
+      </div>
+
+      <div className="my-16">
+        <PaginationSection
+          totalItems={approvedJobs.length}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
+    </>
+  )}
+</div>
   );
 };
 
