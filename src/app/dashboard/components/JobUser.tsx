@@ -472,7 +472,7 @@ const JobUser = () => {
         <>
           <div>
             <div className="w-full flex justify-between py-8">
-              <h1 className="font-bold  mb-0 px-4 font-nunito text-3xl text-white">
+              <h1 className="font-bold  mb-0 px-4 font-nunito text-3xl text-black">
                 Jobs{" "}
               </h1>
              
@@ -481,7 +481,7 @@ const JobUser = () => {
           
 
             {currentItems.length !== 0 ? (
-              <div className="max-h-[500px] min-h-[500px] w-full font-be  overflow-y-auto overflow-x-hidden lg:px-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full font-be overflow-x-hidden lg:px-4">
                 {currentItems
                   .filter((job: any) => {
                     const condition1 = job.is_approved === "approved";
@@ -508,7 +508,7 @@ const JobUser = () => {
                         featureCatgory.filter(
                           (feature: any) => feature.label === item?.feature
                         )[0]?.card
-                      } flex my-8  w-full items-center space-y-4  justify-around rounded-lg p-3 lg:p-6 shadow-md `}
+                      } flex flex-col space-y-4 items-start justify-between rounded-lg p-4 shadow-md `}
                     >
                       <div className="ml-4 space-y-4 w-full  lg:space-y-1 flex-grow">
                         <div className="flex flex-col space-y-4 w-full ">
@@ -519,7 +519,6 @@ const JobUser = () => {
                                 <AvatarImage
                                   src={`${item?.image}` || "/camera.png"}
                                 />
-                               
                                 <AvatarFallback>OM</AvatarFallback>
                               </Avatar>
 
@@ -563,7 +562,7 @@ const JobUser = () => {
                                   )[0]?.card
                                 }`}
                               >
-                                Stipend:
+                                alary:
                               </span>
                               <p className="mt-0 ml-2 lg:ml-0">
                                 {item.salary_start}
