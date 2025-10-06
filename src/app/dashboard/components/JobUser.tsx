@@ -471,7 +471,7 @@ const JobUser = () => {
     <>
       <div>
         <div className="w-full flex justify-between py-8">
-          <h1 className="font-bold mb-0 px-4 font-nunito text-3xl text-black">
+          <h1 className="font-bold mb-0 px-4 font-nunito text-3xl text-white">
             Jobs
           </h1>
         </div>
