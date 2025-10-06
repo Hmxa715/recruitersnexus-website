@@ -119,7 +119,7 @@ const FeatureModal = ({
               <select
                 value={feature}
                 onChange={(e) => setFeature(e.target.value)}
-                className="input py-3.5 px-4 bg-[#F2F5F9] rounded-xl w-full outline-none"
+                className="input py-3.5 px-4 bg-black rounded-xl w-full outline-none"
                 id="martial_status"
               >
                 <option value="">Select Feature </option>
@@ -347,7 +347,7 @@ const JobModal = ({ onClose }: { onClose: () => void }) => {
             <div
               className={`relative flex self-start ${
                 imageUrl ? "p-0" : "p-8"
-              } border-black rounded-full bg-[#F2F5F9] border-1 border-solid`}
+              } border-black rounded-full bg-black border-1 border-solid`}
             >
               <Avatar
                 className={`h-9 w-9 ${
@@ -383,7 +383,7 @@ const JobModal = ({ onClose }: { onClose: () => void }) => {
                 Company Name <span className="text-red-500">*</span>
               </span>
               <input
-                className="input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl"
+                className="input py-3.5 px-4 bg-black w-full outline-none rounded-xl"
                 type="text"
                 value={organization}
                 onChange={(e) => setOrganization(e.target.value)}
@@ -396,7 +396,7 @@ const JobModal = ({ onClose }: { onClose: () => void }) => {
                 Company Location <span className="text-red-500">*</span>
               </span>
               <input
-                className="input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl"
+                className="input py-3.5 px-4 bg-black w-full outline-none rounded-xl"
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
@@ -409,7 +409,7 @@ const JobModal = ({ onClose }: { onClose: () => void }) => {
             Job Title: <span className="text-red-500">*</span>
           </span>
           <input
-            className="input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl"
+            className="input py-3.5 px-4 bg-black w-full outline-none rounded-xl"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -420,7 +420,7 @@ const JobModal = ({ onClose }: { onClose: () => void }) => {
             Salary: <span className="text-red-500">*</span>
           </span>
           {/* <select
-            className="input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl"
+            className="input py-3.5 px-4 bg-black w-full outline-none rounded-xl"
             value={salary_start}
             onChange={handleSalaryStartChange}
           >
@@ -431,7 +431,7 @@ const JobModal = ({ onClose }: { onClose: () => void }) => {
             ))}
           </select> */}
           <input
-            className="input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl"
+            className="input py-3.5 px-4 bg-black w-full outline-none rounded-xl"
             type="text"
             value={salary_start}
             onChange={(e) => setSalary_start(e.target.value)}
@@ -442,7 +442,7 @@ const JobModal = ({ onClose }: { onClose: () => void }) => {
             Expiration Date: <span className="text-red-500">*</span>
           </span>
           {/* <select
-            className="input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl"
+            className="input py-3.5 px-4 bg-black w-full outline-none rounded-xl"
             value={salary_end}
             onChange={handleSalaryEndChange}
           >
@@ -459,7 +459,7 @@ const JobModal = ({ onClose }: { onClose: () => void }) => {
             Job Description <span className="text-red-500">*</span>
           </span>
           <textarea
-            className="input py-3.5 px-4 bg-[#F2F5F9] h-44 w-full outline-none rounded-xl"
+            className="input py-3.5 px-4 bg-black h-44 w-full outline-none rounded-xl"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Description"

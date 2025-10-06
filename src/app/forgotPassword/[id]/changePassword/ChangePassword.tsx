@@ -88,7 +88,7 @@ const ChangePassword = ({id,forgot_pass}:any) => {
   return (
     <div>
       {forgot_pass && check === "true"?(
-        <div className='flex w-full bg-[#F2F5F9] h-screen items-center justify-center'>
+        <div className='flex w-full bg-black h-screen items-center justify-center'>
         <div className='flex text-white flex-col items-center shadow-xl rounded-lg w-[90%] h-[90%] md:h-[60%] md:w-[60%] space-y-5 p-10 justify-center bg-[#242E49]'>
       <h2  className='font-bold text-center'>Change Password</h2>
       <label className='font-bold text-center'>New Password</label>

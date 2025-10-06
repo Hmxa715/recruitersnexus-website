@@ -247,7 +247,7 @@ const Experience = () => {
                 <div className='flex flex-col space-y-6'>
 
                   <div className='flex flex-row space-x-4 items-center justify-start w-full'>
-                    <div className={`relative flex self-start ${imageUrl ? "p-0" : "p-8"} border-black rounded-full bg-[#F2F5F9] border-1 border-solid`}>
+                    <div className={`relative flex self-start ${imageUrl ? "p-0" : "p-8"} border-black rounded-full bg-black border-1 border-solid`}>
                       <Avatar className={`h-9 w-9 ${imageUrl ? "md:h-32 md:w-32" : "md:h-16 md:w-16"}  outline-1 rounded-full border-1 outline-solid outline-black object-cover`}>
                         <AvatarImage className='w-full h-full' src={imageUrl || "/camera.png"} />
                         {/* <AvatarImage src="https://github.com/shadcn.png" /> */}
@@ -262,7 +262,7 @@ const Experience = () => {
 
                   <div className='flex flex-col'>
                     <label htmlFor='designation' className='block text-sm font-bold mb-2'>Designation <span className='text-red-500'>*</span></label>
-                    <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' placeholder='Enter Designation...' value={designation} onChange={(e) => setdesignation(e.target.value)} id='designation' />
+                    <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' placeholder='Enter Designation...' value={designation} onChange={(e) => setdesignation(e.target.value)} id='designation' />
                   </div>
 
                   <div className='flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6 w-full'>
@@ -270,7 +270,7 @@ const Experience = () => {
                     <div className='flex flex-col w-full'>
                       <label htmlFor='from' className='block text-sm font-bold mb-2'>From <span className='text-red-500'>*</span></label>
                       {/* <input type="date" className='input py-2 px-4 bg-gray-300 rounded-lg shadow-md' value={from} onChange={(e) => setfrom(e.target.value)} id='from' /> */}
-                      <input type="date" className='cursor-pointer input  w-full py-3.5  px-4 bg-[#F2F5F9] outline-none rounded-xl' onChange={handleFromDateChange} name="" id="from" />
+                      <input type="date" className='cursor-pointer input  w-full py-3.5  px-4 bg-black outline-none rounded-xl' onChange={handleFromDateChange} name="" id="from" />
                     </div>
 
                     <div className='flex flex-col space-y-5 w-full'>
@@ -278,7 +278,7 @@ const Experience = () => {
 
                       <div className='flex flex-col'>
                         <label htmlFor='to' className='block text-sm font-bold mb-2'>To <span className='text-red-500'>*</span></label>
-                        <input disabled={to === "present"} type="date" className={`cursor-pointer ${to === "present" ? "cursor-not-allowed" : "cursor-pointer"} ${to === "present" ? "bg-gray-300" : "bg-[#F2F5F9]"} input  w-full py-3.5  px-4  outline-none rounded-xl`} onChange={handleToDateChange} name="" id="to" />
+                        <input disabled={to === "present"} type="date" className={`cursor-pointer ${to === "present" ? "cursor-not-allowed" : "cursor-pointer"} ${to === "present" ? "bg-gray-300" : "bg-black"} input  w-full py-3.5  px-4  outline-none rounded-xl`} onChange={handleToDateChange} name="" id="to" />
                       </div>
 
 
@@ -318,24 +318,24 @@ const Experience = () => {
 
                   <div className='flex flex-col'>
                     <label htmlFor='total_experience' className='block text-sm font-bold mb-2'>Total Experience <span className='text-red-500'>*</span></label>
-                    <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' placeholder='Enter Total Experience at current Job (e.g: 0 years, 5 months)...' value={total_experience} onChange={(e) => settotal_experience(e.target.value)} id='total_exeperience' />
+                    <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' placeholder='Enter Total Experience at current Job (e.g: 0 years, 5 months)...' value={total_experience} onChange={(e) => settotal_experience(e.target.value)} id='total_exeperience' />
                   </div>
 
                   <div className='flex flex-col'>
                     <label htmlFor='organization' className='block text-sm font-bold mb-2'>Organization <span className='text-red-500'>*</span></label>
-                    <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' value={organization} placeholder='Enter Organization...' onChange={(e) => setorganization(e.target.value)} id='organization' />
+                    <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' value={organization} placeholder='Enter Organization...' onChange={(e) => setorganization(e.target.value)} id='organization' />
                   </div>
                   </div>
 
                   <div className='flex flex-col'>
                     <label htmlFor='aoe' className='block text-sm font-bold mb-2'>Area of Expertise <span className='text-red-500'>*</span></label>
-                    <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' placeholder='Enter Area of Expertise...' value={aoe} onChange={(e) => setaoe(e.target.value)} id='aoe' />
+                    <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' placeholder='Enter Area of Expertise...' value={aoe} onChange={(e) => setaoe(e.target.value)} id='aoe' />
                   </div>
 
 
                   <div className='flex flex-col'>
                     <label htmlFor='address' className='block text-sm font-bold mb-2'>Address <span className='text-red-500'>*</span></label>
-                    <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' value={address} placeholder='Enter Address...' onChange={(e) => setAddress(e.target.value)} id='address' />
+                    <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' value={address} placeholder='Enter Address...' onChange={(e) => setAddress(e.target.value)} id='address' />
                   </div>
 
 

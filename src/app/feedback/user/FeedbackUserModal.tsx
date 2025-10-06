@@ -203,7 +203,7 @@ const FeedbackUserModal = ({onClose, id, slot }: { onClose: () => void, id: any,
                     <div className='flex  focus:outline-none flex-col  self-start  w-full'>
                         <h1 className='font-bold text-lg my-2'>Write your experience with the HR <span className='text-red-500'>*</span></h1>
                         <textarea
-                            className=' p-6 w-full shadow-md rounded-xl bg-[#F2F5F9] h-44 focus:outline-none   text-black'
+                            className=' p-6 w-full shadow-md rounded-xl bg-black h-44 focus:outline-none   text-black'
                             value={user_feedback}
                             placeholder='Write a feedback...'
                             onChange={(e) => setfeedback(e.target.value)}

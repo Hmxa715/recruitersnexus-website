@@ -26,7 +26,7 @@ export function DefaultDate({
             id="date"
             variant={"ghost"}
             className={cn(
-              " justify-start text-left font-normal input h-[51px]  px-4 bg-[#F2F5F9] rounded-xl",
+              " justify-start text-left font-normal input h-[51px]  px-4 bg-black rounded-xl",
               !startDate && "text-muted-foreground"
             )}
           >

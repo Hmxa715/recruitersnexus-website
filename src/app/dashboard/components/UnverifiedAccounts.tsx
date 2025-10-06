@@ -156,7 +156,7 @@ export const UnverifiedAccounts = () => {
 
 
     return (
-        <div className='bg-[#F2F5F9]  px-[12px] lg:px-8'>
+        <div className='bg-black  px-[12px] lg:px-8'>
 
 {screenLoading ? (
         <SpinnerLoader />
@@ -171,7 +171,7 @@ export const UnverifiedAccounts = () => {
 {currentItems.length === 0 && (<div className="flex w-full h-screen justify-center items-center"><div className="flex bg-white w-[800px] px-2 text-center h-[200px] justify-center rounded-lg shadow-md items-center"> <h1 className="font-nunito font-bold text-3xl text-[#242E49]">No Unverified Account Found</h1></div></div>)}
 
 {users.map((user: any) => (
-<div key={user.id} className="bg-[#F2F5F9] ">
+<div key={user.id} className="bg-black ">
     {currentItems
         .filter((verify: any) => verify.user_id === user.id && verify.verified === "unverified")
         .map((item: any, index: number) => (

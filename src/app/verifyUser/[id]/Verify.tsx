@@ -306,7 +306,7 @@ const Verify = ({ id }: any) => {
       {userData?.id !== id ? (
         <SkeletonLoaderCustom />
       ) : (
-        <div className="w-full bg-[#F2F5F9]">
+        <div className="w-full bg-black">
           <div className="flex h-screen items-center justify-center space-y-4  flex-col space-x-5">
             <div className="bg-[#242E49] rounded-lg shadow-md flex justify-center items-center flex-col space-y-6 p-8 md:p-16 h-[80%] md:w-1/2 md:h-1/2">
               <h2 className="text-white text-center  text-lg md:text-2xl">

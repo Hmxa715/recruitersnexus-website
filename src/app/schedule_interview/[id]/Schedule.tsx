@@ -370,7 +370,7 @@ export default function Schedule({ hr_id, filterServices, allInterviews, filtere
   };
 
   return (
-    <div className='p-6 bg-[#F2F5F9] h-full  '>
+    <div className='p-6 bg-black h-full  '>
       {userData && userData.role == 'user' || userData?.role == 'admin' && filteredVerifications[0]?.verified === "verified" ? (
         <div className=''>
           <div className='w-full mb-32 md:mb-0'>

@@ -15,13 +15,13 @@ import NavBar from '../dashboard/components/NavBar';
 
 export default function page() {
   return (
-    <div className='bg-[#F2F5F9] w-full h-screen'>
+    <div className='bg-black w-full h-screen'>
       
 
       <NavBar/>
 
-      <div className="grid gap-4 md:grid-cols-1 bg-[#F2F5F9] h-screen">
-        <Card className="col-span-3 bg-[#F2F5F9] h-screen">
+      <div className="grid gap-4 md:grid-cols-1 bg-black h-screen">
+        <Card className="col-span-3 bg-black h-screen">
           <CardHeader>
             <CardTitle>Experts</CardTitle>
             <CardDescription>

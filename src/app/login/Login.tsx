@@ -115,7 +115,7 @@ export default function Login() {
   }
 
   return (
-    <div className="w-full bg-[#F2F5F9]   ">
+    <div className="w-full bg-black   ">
       <NavbarLogo />
 
       <div className="flex w-full justify-center items-center py-28 md:py-36 px-2 ">

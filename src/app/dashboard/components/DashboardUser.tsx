@@ -393,10 +393,10 @@ export default function DashboardUser() {
           
           {/* Interview Tab */}
           <TabsContent value="interviews" className="">
-            <div className="bg-[#F2F5F9]">
+            <div className="bg-black">
               <h1 className="font-bold text-2xl mb-4">Interviews</h1>
               <h2 className="font-bold">Not Conducted Interviews</h2>
-              <div className="bg-[#F2F5F9]">
+              <div className="bg-black">
                 {/* NOT CONDUCTED INTERVIEWS */}
                 {userNotification?.map((user: any) => (
                   <div className="" key={user.id}>
@@ -512,7 +512,7 @@ export default function DashboardUser() {
               {/* Horizontal line separating the sections */}
               <h2 className="font-bold">Conducted Interviews</h2>
               <div
-                className="bg-[#F2F5F9]"
+                className="bg-black"
                 style={{ maxHeight: "400px", overflowY: "auto" }}
               >
                 {" "}

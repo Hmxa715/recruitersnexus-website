@@ -131,7 +131,7 @@ export default function SignUpComponent() {
   }
 
   return (
-    <div className="bg-[#F2F5F9]">
+    <div className="bg-black">
 
       <NavbarLogo />
       <div className="flex w-full justify-center items-center py-20 px-2 ">
@@ -139,7 +139,7 @@ export default function SignUpComponent() {
         {/* <div className="bg-[#242E49] text-white rounded-lg space-y-4 w-full  "> */}
       <Form {...form}>
         {check == "false" ? (
-          <div className="flex w-full bg-[#F2F5F9] justify-center items-center ">
+          <div className="flex w-full bg-black justify-center items-center ">
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="bg-[#242E49] text-white px-2 rounded-lg space-y-4 w-full min-w-[300px] md:min-w-[400px] max-w-md"

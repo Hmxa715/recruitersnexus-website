@@ -353,7 +353,7 @@ const UserInfo = ({ changeTabValue, setDefaultValue }: any) => {
 
 
   return (
-    <div className='bg-[#F2F5F9] min-h-screen font-nunito'>
+    <div className='bg-black min-h-screen font-nunito'>
       {userData? (<div className=' mx-auto py-0'>
         <h2 className='text-3xl font-bold mb-8 text-[#242E49]'>User Information</h2>
 
@@ -372,7 +372,7 @@ const UserInfo = ({ changeTabValue, setDefaultValue }: any) => {
 
           <div className='flex flex-row space-x-4 items-center justify-start w-full mb-8'>
 
-            <div className={`relative flex self-start ${imageUrl ? "p-0" : "p-8"} border-black rounded-full bg-[#F2F5F9] border-1 border-solid`}>
+            <div className={`relative flex self-start ${imageUrl ? "p-0" : "p-8"} border-black rounded-full bg-black border-1 border-solid`}>
               <Avatar className={`h-9 w-9 ${imageUrl ? "md:h-32 md:w-32" : "md:h-16 md:w-16"}  outline-1 rounded-full border-1 outline-solid outline-black object-cover`}>
                 <AvatarImage className='w-full h-full' src={imageUrl || "/camera.png"} />
                 {/* <AvatarImage src="https://github.com/shadcn.png" /> */}
@@ -387,25 +387,25 @@ const UserInfo = ({ changeTabValue, setDefaultValue }: any) => {
           <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mb-5'>
             <div>
               <label className='block text-sm font-bold mb-2' htmlFor='fname'>First Name <span className='text-red-500'>*</span> </label>
-              <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' placeholder='Enter First Name...' value={fname} onChange={(e) => setFname(e.target.value)} id='fname' />
+              <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' placeholder='Enter First Name...' value={fname} onChange={(e) => setFname(e.target.value)} id='fname' />
             </div>
             <div>
               <label className='block text-sm font-bold mb-2' htmlFor='lname'>Last Name <span className='text-red-500'>*</span></label>
-              <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' placeholder='Enter Last Name...' value={lname} onChange={(e) => setLname(e.target.value)} id='lname' />
+              <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' placeholder='Enter Last Name...' value={lname} onChange={(e) => setLname(e.target.value)} id='lname' />
             </div>
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mb-5'>
             <div>
               <label className='block text-sm font-bold mb-2' htmlFor='father_name'>Father{"'"}s Name <span className='text-red-500'>*</span></label>
-              <input type="text" className='input w-full py-3.5  px-4 bg-[#F2F5F9] outline-none rounded-xl' placeholder='Enter Father Name...' value={father_name} onChange={(e) => setfather_name(e.target.value)} id='father_name' />
+              <input type="text" className='input w-full py-3.5  px-4 bg-black outline-none rounded-xl' placeholder='Enter Father Name...' value={father_name} onChange={(e) => setfather_name(e.target.value)} id='father_name' />
             </div>
             <div>
               <label className='block text-sm font-bold mb-2' htmlFor='dob'>Date of Birth <span className='text-red-500'>*</span></label>
               {/* <input type="date" className='input py-2 px-4 bg-gray-300 rounded-lg shadow-md' value={dob} onChange={(e) => setdob(e.target.value)} id='dob' /> */}
               {/* <DefaultDate className='w-full' onDateChange={handledobDateChange} /> */}
               {/* <div className='' onClick={handleClick}> */}
-              <input type="date" className='cursor-pointer input  w-full py-3.5  px-4 bg-[#F2F5F9] outline-none rounded-xl' value={dob} onChange={handledobDateChange} name="" id="dob" />
+              <input type="date" className='cursor-pointer input  w-full py-3.5  px-4 bg-black outline-none rounded-xl' value={dob} onChange={handledobDateChange} name="" id="dob" />
               {/* </div> */}
             </div>
 
@@ -414,14 +414,14 @@ const UserInfo = ({ changeTabValue, setDefaultValue }: any) => {
 
           <div className='mb-5'>
             <label className='block text-sm font-bold mb-2' htmlFor='about'>About <span className='text-red-500'>*</span></label>
-            <textarea className='input py-2 w-full h-48 px-4 bg-[#F2F5F9] rounded-xl outline-none' placeholder='Enter Bio...' value={about} onChange={handleAboutChange} id='about' />
+            <textarea className='input py-2 w-full h-48 px-4 bg-black rounded-xl outline-none' placeholder='Enter Bio...' value={about} onChange={handleAboutChange} id='about' />
           </div>
 
 
           <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mb-5'>
             <div>
               <label className='block text-sm font-bold mb-2 ' htmlFor='gender'>Gender <span className='text-red-500'>*</span></label>
-              <select value={gender} onChange={(e) => setgender(e.target.value)} className='input py-3.5 px-4 bg-[#F2F5F9] rounded-xl w-full outline-none' id='gender'>
+              <select value={gender} onChange={(e) => setgender(e.target.value)} className='input py-3.5 px-4 bg-black rounded-xl w-full outline-none' id='gender'>
                 <option value="">Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -430,7 +430,7 @@ const UserInfo = ({ changeTabValue, setDefaultValue }: any) => {
             </div>
             <div>
               <label className='block text-sm font-bold mb-2' htmlFor='martial_status'>Martial Status <span className='text-red-500'>*</span></label>
-              <select value={martial_status} onChange={(e) => setmartial_status(e.target.value)} className='input py-3.5 px-4 bg-[#F2F5F9] rounded-xl w-full outline-none' id='martial_status'>
+              <select value={martial_status} onChange={(e) => setmartial_status(e.target.value)} className='input py-3.5 px-4 bg-black rounded-xl w-full outline-none' id='martial_status'>
                 <option value="">Select Martial Status</option>
                 <option value="Single">Single</option>
                 <option value="Married">Married</option>
@@ -444,25 +444,25 @@ const UserInfo = ({ changeTabValue, setDefaultValue }: any) => {
                 <option value="Other">Other</option>
               </select>
             </div>
-            {/* <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] rounded-xl w-full outline-none' placeholder='Enter Martial Status...' value={martial_status} onChange={(e) => setmartial_status(e.target.value)} id='martial_status' /> */}
+            {/* <input type="text" className='input py-3.5 px-4 bg-black rounded-xl w-full outline-none' placeholder='Enter Martial Status...' value={martial_status} onChange={(e) => setmartial_status(e.target.value)} id='martial_status' /> */}
           </div>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mb-5'>
 
 
           <div className='mb-5'>
             <label className='block text-sm font-bold mb-2' htmlFor='phone'>Phone Number <span className='text-red-500'>*</span></label>
-            <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] rounded-xl w-full outline-none' placeholder='Enter Phone Number...' value={phone} onChange={(e) => setPhone(e.target.value)} id='phone' />
+            <input type="text" className='input py-3.5 px-4 bg-black rounded-xl w-full outline-none' placeholder='Enter Phone Number...' value={phone} onChange={(e) => setPhone(e.target.value)} id='phone' />
           </div>
 
           <div className='mb-5'>
             <label className='block text-sm font-bold mb-2' htmlFor='nic'>ID <span className='text-red-500'>*</span></label>
-            <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] rounded-xl w-full outline-none' placeholder='Enter NIC (Without Dashes)...' value={nic} onChange={(e) => setnic(e.target.value)} id='nic' />
+            <input type="text" className='input py-3.5 px-4 bg-black rounded-xl w-full outline-none' placeholder='Enter NIC (Without Dashes)...' value={nic} onChange={(e) => setnic(e.target.value)} id='nic' />
           </div>
           </div>
 
           <div className='mb-5'>
             <label className='block text-sm font-bold mb-2' htmlFor='nic'>Designation <span className='text-red-500'>*</span></label>
-            <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] rounded-xl w-full outline-none' placeholder='Enter Designation...' value={designation} onChange={(e) => setdesignation(e.target.value)} id='designation' />
+            <input type="text" className='input py-3.5 px-4 bg-black rounded-xl w-full outline-none' placeholder='Enter Designation...' value={designation} onChange={(e) => setdesignation(e.target.value)} id='designation' />
           </div>
 
 
@@ -470,12 +470,12 @@ const UserInfo = ({ changeTabValue, setDefaultValue }: any) => {
 
             <div>
               <label className='block text-sm font-bold mb-2' htmlFor='religion'>Religion <span className='text-red-500'>*</span></label>
-              <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] rounded-xl w-full outline-none' placeholder='Enter Religion...' value={religion} onChange={(e) => setreligion(e.target.value)} id='religion' />
+              <input type="text" className='input py-3.5 px-4 bg-black rounded-xl w-full outline-none' placeholder='Enter Religion...' value={religion} onChange={(e) => setreligion(e.target.value)} id='religion' />
             </div>
 
             <div >
               <label className='block text-sm font-bold mb-2 ' htmlFor='nationality'>Nationality <span className='text-red-500'>*</span></label>
-              <select value={nationality} onChange={(e) => setnationality(e.target.value)} className='input py-3.5 px-4 bg-[#F2F5F9] rounded-xl w-full outline-none' id='nationality'>
+              <select value={nationality} onChange={(e) => setnationality(e.target.value)} className='input py-3.5 px-4 bg-black rounded-xl w-full outline-none' id='nationality'>
                 <option value="">Select Nationality</option>
                 {nationalityData.map((item: any) => (
                   <option key={item.name} value={item.name}>{item.name}</option>

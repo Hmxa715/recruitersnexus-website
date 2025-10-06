@@ -157,7 +157,7 @@ const Notifications = () => {
   }, [userData, status, router]);
 
   return (
-    <div className='bg-[#F2F5F9] h-screen text-black mt-12 px-[12px] font-nunito'>
+    <div className='bg-black h-screen text-black mt-12 px-[12px] font-nunito'>
       
       {screenLoading ? (
         <SpinnerLoader />

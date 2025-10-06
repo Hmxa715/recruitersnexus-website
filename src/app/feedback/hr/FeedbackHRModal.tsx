@@ -183,7 +183,7 @@ const FeedbackHRModal = ({
               </span>
               <input
                 type="text"
-                className="input py-2 px-4 bg-[#F2F5F9] rounded-lg shadow-md "
+                className="input py-2 px-4 bg-black rounded-lg shadow-md "
                 placeholder="Enter candidate name.."
                 value={candidate}
                 onChange={(e) => setcandidate(e.target.value)}
@@ -197,7 +197,7 @@ const FeedbackHRModal = ({
               </span>
               <input
                 type="text"
-                className="input py-2 px-4 bg-[#F2F5F9] rounded-lg shadow-md "
+                className="input py-2 px-4 bg-black rounded-lg shadow-md "
                 placeholder="Enter strength.."
                 value={Strength}
                 onChange={(e) => setStrength(e.target.value)}
@@ -215,7 +215,7 @@ const FeedbackHRModal = ({
             </span>
             <input
               type="text"
-              className="input py-2 px-4 bg-[#F2F5F9] rounded-lg shadow-md "
+              className="input py-2 px-4 bg-black rounded-lg shadow-md "
               placeholder="Enter weakness.."
               value={weakness}
               onChange={(e) => setWeakness(e.target.value)}
@@ -228,7 +228,7 @@ const FeedbackHRModal = ({
               Description <span className="text-red-500">*</span>
             </span>
             <textarea
-              className=" p-6 self-left w-full shadow-md rounded-xl bg-[#F2F5F9] h-44 focus:outline-none  text-black"
+              className=" p-6 self-left w-full shadow-md rounded-xl bg-black h-44 focus:outline-none  text-black"
               placeholder="Enter description.."
               value={description}
               onChange={(e) => setDescription(e.target.value)}

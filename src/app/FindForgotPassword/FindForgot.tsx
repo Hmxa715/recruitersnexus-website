@@ -258,7 +258,7 @@ const FindForgot = () => {
 
 
   return (
-    <div className='h-screen bg-[#F2F5F9] text-white/60 w-full flex items-center justify-center flex-col'>
+    <div className='h-screen bg-black text-white/60 w-full flex items-center justify-center flex-col'>
         
         <div className='bg-[#242E49]  w-3/4 h-3/4  md:w-1/2 md:h-1/2 justify-center shadow-xl rounded-lg p-10 flex flex-col items-center space-y-6'>
         <h2 className='text-white text-center text-lg md:text-2xl'>Please enter your email address and a security code will be sent on your email</h2>

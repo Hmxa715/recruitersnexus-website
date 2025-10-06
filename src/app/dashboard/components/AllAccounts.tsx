@@ -191,7 +191,7 @@ const RoleModal = ({ onClose, email, user_id }: { onClose: () => void, email: an
             <div className="flex flex-row space-x-4 items-center justify-start w-full">
               <div>
                 <label className='block text-sm font-bold mb-2' htmlFor='martial_status'>Select Role <span className='text-red-500'>*</span></label>
-                <select value={role} onChange={(e) => setRole(e.target.value)} className='input py-3.5 px-4 bg-[#F2F5F9] rounded-xl w-full outline-none' id='martial_status'>
+                <select value={role} onChange={(e) => setRole(e.target.value)} className='input py-3.5 px-4 bg-black rounded-xl w-full outline-none' id='martial_status'>
                   <option value="">Select Role </option>
                   <option value="hr">HR</option>
                   <option value="user">USER</option>

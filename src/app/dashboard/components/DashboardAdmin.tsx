@@ -684,7 +684,7 @@ function DashboardAdmin() {
 
 
     return (
-        <div className='bg-[#F2F5F9] font-nunito'>
+        <div className='bg-black font-nunito'>
 
 
             {/* <NavBar /> */}
@@ -987,10 +987,10 @@ function DashboardAdmin() {
                     {/* Unverified Section */}
 
                     <TabsContent value="accounts" className="">
-                        <div className='bg-[#F2F5F9]'>
+                        <div className='bg-black'>
                             <h1 className="font-bold text-2xl mb-4">Unverified Accounts List: </h1>
                             {users.map((user: any) => (
-                                <div key={user.id} className="bg-[#F2F5F9]">
+                                <div key={user.id} className="bg-black">
                                     {verification
                                         .filter((verify: any) => verify.user_id === user.id && verify.verified === "unverified")
                                         .map((item: any, index: number) => (
@@ -1310,7 +1310,7 @@ function DashboardAdmin() {
                                                             {jobSkill?.filter((skill: any) => skill.user_id === item.id).map((item: any) => (
                                                                 <div key={item?.sid} className='flex flex-row space-x-4'>
 
-                                                                    <div className='text-sm bg-[#F2F5F9] py-1.5 px-2 rounded-lg flex w-full relative'>
+                                                                    <div className='text-sm bg-black py-1.5 px-2 rounded-lg flex w-full relative'>
                                                                         <div className='flex w-full justify-end'>
                                                                             <button onClick={() => onClickDeleteSkill(item.sid)}><X className="w-2 cursor-pointer hover:text-red-500 h-2 flex absolute top-0 right-0  mr-1 mt-1 " /></button>
                                                                         </div>

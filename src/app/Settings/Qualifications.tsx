@@ -128,30 +128,30 @@ const Qualifications = () => {
 
                 <div className='flex flex-col'>
                   <label htmlFor='degree' className='block text-sm font-bold mb-2'>Degree <span className='text-red-500'>*</span></label>
-                  <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' placeholder='Enter Degree...' value={degree} onChange={(e) => setdegree(e.target.value)} id='degree' />
+                  <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' placeholder='Enter Degree...' value={degree} onChange={(e) => setdegree(e.target.value)} id='degree' />
                 </div>
 
                 <div className='flex flex-col'>
                   <label htmlFor='specialization' className='block text-sm font-bold mb-2'>Specialization <span className='text-red-500'>*</span></label>
-                  <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' placeholder='Enter Speciallization...' value={speciallization} onChange={(e) => setspeciallization(e.target.value)} id='specialization' />
+                  <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' placeholder='Enter Speciallization...' value={speciallization} onChange={(e) => setspeciallization(e.target.value)} id='specialization' />
                 </div>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mb-5'>
 
                 <div className='flex flex-col'>
                   <label htmlFor='CGPA' className='block text-sm font-bold mb-2'>CGPA <span className='text-red-500'>*</span></label>
-                  <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' placeholder='Enter CGPA...' value={CGPA} onChange={(e) => setCGPA(e.target.value)} id='CGPA' />
+                  <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' placeholder='Enter CGPA...' value={CGPA} onChange={(e) => setCGPA(e.target.value)} id='CGPA' />
                 </div>
 
                 <div className='flex flex-col'>
                   <label htmlFor='passingYear' className='block text-sm font-bold mb-2'>Passing Year <span className='text-red-500'>*</span></label>
-                  <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' value={passingYear} placeholder='Enter Passing Year...' onChange={(e) => setpassingYear(e.target.value)} id='passingYear' />
+                  <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' value={passingYear} placeholder='Enter Passing Year...' onChange={(e) => setpassingYear(e.target.value)} id='passingYear' />
                 </div>
                 </div>
 
                 <div className='flex flex-col'>
                   <label htmlFor='institute' className='block text-sm font-bold mb-2'>Institute <span className='text-red-500'>*</span></label>
-                  <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl' placeholder='Enter Institute...' value={institute} onChange={(e) => setinstitute(e.target.value)} id='institute' />
+                  <input type="text" className='input py-3.5 px-4 bg-black w-full outline-none rounded-xl' placeholder='Enter Institute...' value={institute} onChange={(e) => setinstitute(e.target.value)} id='institute' />
                 </div>
               </div>
 

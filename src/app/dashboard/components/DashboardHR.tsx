@@ -709,7 +709,7 @@ function DashboardHR() {
             <div className='bg-[#D7DBEC]'>
               <h1 className="font-bold text-2xl mb-4 text-blue-600">Notifications</h1>
               {userNotification.map((user: any) => (
-                <div key={user.id} className="bg-[#F2F5F9] h-full">
+                <div key={user.id} className="bg-black h-full">
                   {filteredInterviews
                     .filter((interview: any) => interview.user_id === user.id && interview.is_confirmed === "unConfirmed")
                     .map((interview: any, index: number) => (
@@ -747,7 +747,7 @@ function DashboardHR() {
 
           {/* Interview Tab */}
           <TabsContent value="interviews" className="">
-            <div className='bg-[#F2F5F9]'>
+            <div className='bg-black'>
               <h1 className="font-bold text-2xl mb-4">Interviews</h1>
               <h2 className='font-bold'>Not Conducted Interviews</h2>
               <div>
@@ -892,7 +892,7 @@ function DashboardHR() {
           {/* Job Posting */}
 
           <TabsContent value="job" className="">
-            <div className=' bg-[#F2F5F9]'>
+            <div className=' bg-black'>
               <div className='w-full flex justify-between '>
                 <h1 className="font-bold text-2xl mb-4">Job Posting List: </h1>
                 <button className='hover:text-green-400 ' onClick={openJobModal}><Plus /></button>
@@ -913,7 +913,7 @@ function DashboardHR() {
                             {jobSkill?.filter((skill: any) => skill.user_id === item.id).map((item: any) => (
                               <div key={item?.sid} className='flex flex-row space-x-4'>
 
-                                <div className='text-sm bg-[#F2F5F9] py-1.5 px-2 rounded-lg flex w-full relative'>
+                                <div className='text-sm bg-black py-1.5 px-2 rounded-lg flex w-full relative'>
                                   <div className='flex w-full justify-end'>
                                     <button onClick={() => onClickDeleteSkill(item.sid)}><X className="w-2 cursor-pointer hover:text-red-500 h-2 flex absolute top-0 right-0  mr-1 mt-1 " /></button>
                                   </div>

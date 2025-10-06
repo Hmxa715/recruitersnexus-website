@@ -81,7 +81,7 @@ export default function Contact() {
               Name
             </label>
             <input
-              className="input py-3.5 px-4 bg-[#F2F5F9] text-black w-full outline-none rounded-xl"
+              className="input py-3.5 px-4 bg-black text-black w-full outline-none rounded-xl"
               
               id="name"
               type="text"
@@ -98,7 +98,7 @@ export default function Contact() {
               Email
             </label>
             <input
-              className="input py-3.5 px-4 bg-[#F2F5F9] text-black w-full outline-none rounded-xl"
+              className="input py-3.5 px-4 bg-black text-black w-full outline-none rounded-xl"
              
               id="email"
               type="email"
@@ -116,7 +116,7 @@ export default function Contact() {
             Phone Number
           </label>
           <input
-            className="input py-3.5 px-4 bg-[#F2F5F9] text-black w-full outline-none rounded-xl"
+            className="input py-3.5 px-4 bg-black text-black w-full outline-none rounded-xl"
             
             id="phone"
             type="tel"
@@ -133,7 +133,7 @@ export default function Contact() {
             Message
           </label>
           <textarea
-            className="input py-3.5 px-4 bg-[#F2F5F9]  text-black w-full outline-none rounded-xl"
+            className="input py-3.5 px-4 bg-black  text-black w-full outline-none rounded-xl"
            
             id="message"
             rows={4}

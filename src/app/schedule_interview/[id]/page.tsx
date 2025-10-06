@@ -91,7 +91,7 @@ export default async function page({ params }: { params: { key: string, id: stri
 
 
   return (
-    <div className='bg-[#F2F5F9] h-auto w-full'>
+    <div className='bg-black h-auto w-full'>
       
       <NavBar/>
 

@@ -204,7 +204,7 @@ const TransactionsPage = () => {
     }
   }, [selectedTxn, showModal]); // ✅ Runs only when `selectedTxn` and `showModal` are set
   return (
-    <div className="w-full flex md:flex-row flex-col pt-12 bg-[#F2F5F9] font-nunito">
+    <div className="w-full flex md:flex-row flex-col pt-12 bg-black font-nunito">
       <div className={`${useUserData().userData ? "flex" : "hidden"}`}>
         <NavBar />
       </div>
@@ -212,7 +212,7 @@ const TransactionsPage = () => {
       <div
         className={`w-full ${
           useUserData().userData ? "md:flex" : "hidden"
-        } md:min-w-[250px] md:w-1/5 hidden flex-col p-6 h-full md:h-auto bg-[#F2F5F9] border-r-2 border-[#A4AC7EB] space-y-6`}
+        } md:min-w-[250px] md:w-1/5 hidden flex-col p-6 h-full md:h-auto bg-black border-r-2 border-[#A4AC7EB] space-y-6`}
       >
         <Sidebar slug="transactions" />
       </div>
@@ -220,7 +220,7 @@ const TransactionsPage = () => {
       <div
         className={`w-full ${
           useUserData().userData ? "md:w-4/5" : "w-full"
-        } h-full bg-[#F2F5F9] pb-32`}
+        } h-full bg-black pb-32`}
       >
         <div className="max-w-7xl mx-auto">
           {!userData && (
@@ -533,7 +533,7 @@ const TransactionsPage = () => {
       <div
         className={`w-full ${
           useUserData().userData ? "md:hidden" : "hidden"
-        } fixed bottom-0 z-20 md:min-w-[250px] border-t-2 md:w-1/5 items-center justify-center flex-col py-0 h-24 md:h-auto bg-[#F2F5F9] border-r-2 border-[#A4AC7EB] space-y-6`}
+        } fixed bottom-0 z-20 md:min-w-[250px] border-t-2 md:w-1/5 items-center justify-center flex-col py-0 h-24 md:h-auto bg-black border-r-2 border-[#A4AC7EB] space-y-6`}
       >
         <Sidebar slug="transactions" />
       </div>

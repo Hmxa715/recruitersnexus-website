@@ -4,7 +4,7 @@ import Confirmation from '../Confirmation'
 
 function page({params}:any) {
   return (
-    <div className='flex items-center justify-center h-screen w-full bg-[#F2F5F9]'>
+    <div className='flex items-center justify-center h-screen w-full bg-black'>
         <Confirmation id={params.id}/>
     </div>
   )

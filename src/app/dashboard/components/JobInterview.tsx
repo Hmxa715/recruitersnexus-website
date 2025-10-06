@@ -399,7 +399,7 @@ export default function JobInterview({ hr_id, filterServices, allInterviews, fil
     };
 
     return (
-        <div className='md:px-4 py-4 px-[12px] bg-[#F2F5F9] h-full  '>
+        <div className='md:px-4 py-4 px-[12px] bg-black h-full  '>
 
         {screenLoading ? (
         <SpinnerLoader />
@@ -489,7 +489,7 @@ export default function JobInterview({ hr_id, filterServices, allInterviews, fil
                                 <ul className=''>
                                     {filterServices.length > 0 && filterServices?.filter((item: any) => item.category === "job" && new Date(item?.slot) >= new Date()).length > 0 ? (<>
                                         {filterServices?.filter((item: any) => item.category === "job" && new Date(item?.slot) >= new Date()).map((item: any) => (
-                                        <li className='bg-[#F2F5F9] py-2 px-2 flex items-start md:items-center flex-col md:flex-row justify-between shadow-md rounded-2xl mb-4' key={item.sid}>
+                                        <li className='bg-black py-2 px-2 flex items-start md:items-center flex-col md:flex-row justify-between shadow-md rounded-2xl mb-4' key={item.sid}>
 
 
                                             <div className='flex items-center'>

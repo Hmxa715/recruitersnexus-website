@@ -335,7 +335,7 @@ const filteredDataforUsers:userData[] = users?.filter((item:any)=> id === item?.
       ):
       (
         <div>
-          <div className='flex h-screen bg-[#F2F5F9] text-white/60 items-center justify-center space-y-4  flex-col space-x-5'>
+          <div className='flex h-screen bg-black text-white/60 items-center justify-center space-y-4  flex-col space-x-5'>
             <div className='bg-[#242E49] rounded-lg shadow-xl flex justify-center items-center flex-col space-y-6 p-10 w-[80%] h-3/4  md:w-1/2 md:h-1/2'>
             <h2 className='text-white text-center text-lg md:text-2xl'>Please enter the security code sent to your email </h2>
           {/* <label className='font-bold text-xl'>Security Code</label> */}

@@ -77,7 +77,7 @@ const Modal = ({ onClose }: { onClose: () => void }) => {
           Add a skill to your profile
         </h1>
         <input
-          className="input py-3.5 px-4 bg-[#F2F5F9] w-full outline-none rounded-xl"
+          className="input py-3.5 px-4 bg-black w-full outline-none rounded-xl"
           type="text"
           placeholder="Enter skill..."
           value={skill}
@@ -577,7 +577,7 @@ const Profile = ({ user_id }: any) => {
                                 ) : (
 
                                     <div className='flex flex-row items-center h-full  space-x-6 '>
-                                        <input type="text" className='input py-3.5 px-4 bg-[#F2F5F9] w-1/2 outline-none rounded-xl' value={calculate_experience} onChange={(e) => setCalculateExperience(e.target.value)} placeholder='Enter total experience...' name="calculate_experience" id="calculate_experiencee" />
+                                        <input type="text" className='input py-3.5 px-4 bg-black w-1/2 outline-none rounded-xl' value={calculate_experience} onChange={(e) => setCalculateExperience(e.target.value)} placeholder='Enter total experience...' name="calculate_experience" id="calculate_experiencee" />
                                         <Button className='bg-[#4765FF] hover:bg-[#4765FF]/80  h-11 rounded-lg' onClick={handleCalculateExperience}>Submit</Button>
                                     </div>
 

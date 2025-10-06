@@ -61,7 +61,7 @@ export default function Setting({ id }: any) {
         <div className='w-full md:w-1/6 flex flex-col h-64  md:h-auto bg-slate-500 space-y-6'>
           <SettingBar />
         </div>
-        <div className='w-full md:w-5/6 bg-[#F2F5F9]'>
+        <div className='w-full md:w-5/6 bg-black'>
           {id === "userinfo" ? (
             <UserInfo />
           ) : id === "qualifications" ? (

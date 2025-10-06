@@ -347,7 +347,7 @@ const filteredVerification:verifyData[] = verification.filter((item:any)=>userDa
   }
 
   return (
-    <div className='bg-[#F2F5F9] w-full flex h-screen justify-center items-center'>
+    <div className='bg-black w-full flex h-screen justify-center items-center'>
       <NavBar />
       {userData && userData.role !='hr' && userData.role !='user'? (
         <div className={`flex flex-col   bg-white w-3/4 h-3/4 md:h-1/2 md:w-1/2 shadow-lg rounded-lg  justify-center items-center `}>

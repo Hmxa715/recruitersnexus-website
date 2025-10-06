@@ -120,10 +120,10 @@ console.log("Slug Value: ", slug);
 
 
   return (
-    <div className='bg-[#F2F5F9] mt-6 md:mt-10 px-4 font-nunito'>
+    <div className='bg-black mt-6 md:mt-10 px-4 font-nunito'>
 {/* {userData && filterHrData.length > 0 ?( */}
-          <Tabs defaultValue={defaultValue || "userInfo"} className="space-y-0 md:space-y-0 bg-[#F2F5F9] ">
-          <TabsList className='flex bg-[#F2F5F9] w-full h-32 space-x-4  flex-wrap  flex-row items-start  justify-end'>
+          <Tabs defaultValue={defaultValue || "userInfo"} className="space-y-0 md:space-y-0 bg-black ">
+          <TabsList className='flex bg-black w-full h-32 space-x-4  flex-wrap  flex-row items-start  justify-end'>
             <TabsTrigger className='data-[state=active]:bg-[#242E49] data-[state=active]:text-white text-xs md:text-md w-26 md:w-36 py-3 bg-white shadow-lg ' value="userInfo">User Information</TabsTrigger>
 
             <TabsTrigger className='data-[state=active]:bg-[#242E49] data-[state=active]:text-white text-xs md:text-md w-26 md:w-36 py-3 bg-white shadow-lg ' value={`qualifications`} >

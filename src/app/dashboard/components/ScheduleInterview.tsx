@@ -19,10 +19,10 @@ const ScheduleInterview = ({ hr_id, filterServices, allInterviews, filteredHr }:
 const {userData} = useUserData();    
 
   return (
-    <div className='bg-[#F2F5F9] mt-6 px-0'>
+    <div className='bg-black mt-6 px-0'>
 
-<Tabs defaultValue="mock" className="space-y-4 md:space-y-2 bg-[#F2F5F9] ">
-          <TabsList className='flex bg-[#F2F5F9] w-full  space-x-4   flex-row items-start  justify-end'>
+<Tabs defaultValue="mock" className="space-y-4 md:space-y-2 bg-black ">
+          <TabsList className='flex bg-black w-full  space-x-4   flex-row items-start  justify-end'>
             <TabsTrigger className='data-[state=active]:bg-[#242E49] data-[state=active]:text-white w-36 py-3 bg-white shadow-lg ' value="mock">Mock Interview Slots</TabsTrigger>
 
             <TabsTrigger className='data-[state=active]:bg-[#242E49] data-[state=active]:text-white w-36 py-3 bg-white shadow-lg ' value="job" >

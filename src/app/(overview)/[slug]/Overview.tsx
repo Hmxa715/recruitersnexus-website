@@ -40,7 +40,7 @@ const Overview = ({
   const { userData, status } = useUserData();
   return (
     <div
-      className={`w-full flex md:flex-row flex-col pt-12 bg-[#F2F5F9] font-nunito`}
+      className={`w-full flex md:flex-row flex-col pt-12 bg-black font-nunito`}
     >
       <div className={`${useUserData().userData ? "flex" : "hidden"}`}>
         <NavBar />
@@ -49,7 +49,7 @@ const Overview = ({
       <div
         className={`w-full ${
           useUserData().userData ? "md:flex" : "hidden"
-        }  md:min-w-[250px] md:w-1/5 hidden  flex-col p-6 h-full  md:h-auto bg-[#F2F5F9] border-r-2 border-[#A4AC7EB] space-y-6`}
+        }  md:min-w-[250px] md:w-1/5 hidden  flex-col p-6 h-full  md:h-auto bg-black border-r-2 border-[#A4AC7EB] space-y-6`}
       >
         <SideBar slug={slug} />
       </div>
@@ -57,7 +57,7 @@ const Overview = ({
       <div
         className={`w-full ${
           useUserData().userData ? "md:w-4/5" : "w-full"
-        } h-full bg-[#F2F5F9] pb-32`}
+        } h-full bg-black pb-32`}
       >
         {slug === "dashboards" ? (
           <Dashboard />
@@ -112,7 +112,7 @@ const Overview = ({
       <div
         className={`w-full ${
           status === "404" ? "hidden" : "flex"
-        } fixed bottom-0 z-20 md:min-w-[250px] border-t-2  md:w-1/5  md:hidden items-center justify-center flex-col py-0 h-24  md:h-auto bg-[#F2F5F9] border-r-2 border-[#A4AC7EB] space-y-6`}
+        } fixed bottom-0 z-20 md:min-w-[250px] border-t-2  md:w-1/5  md:hidden items-center justify-center flex-col py-0 h-24  md:h-auto bg-black border-r-2 border-[#A4AC7EB] space-y-6`}
       >
         <SideBar slug={slug} />
       </div>

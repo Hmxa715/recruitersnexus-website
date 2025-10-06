@@ -77,7 +77,7 @@ const Modal = ({ onClose, onSubmit }: { onClose: () => void, onSubmit: (reason: 
           value={reason}
           onChange={(e) => setReason(e.target.value)}
           placeholder="Enter reason..."
-          className="input py-3.5 px-4 bg-[#F2F5F9] h-44 w-full outline-none rounded-xl"
+          className="input py-3.5 px-4 bg-black h-44 w-full outline-none rounded-xl"
         ></textarea>
         <div className="flex justify-end my-4 space-x-4">
           <button onClick={onClose} className="px-4 py-2 bg-gray-300 text-gray-800 rounded-md">Cancel</button>

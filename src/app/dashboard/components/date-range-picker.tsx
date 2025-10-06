@@ -26,7 +26,7 @@ export function CalendarDateRangePicker({
             id="date"
             variant={"ghost"}
             className={cn(
-              "w-full input h-10  py-2 px-4 bg-[#F2F5F9] rounded-xl outline-none justify-between text-left font-normal",
+              "w-full input h-10  py-2 px-4 bg-black rounded-xl outline-none justify-between text-left font-normal",
               !startDate && "text-muted-foreground"
             )}
           >
