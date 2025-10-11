@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     for (const field of requiredFields) {
       if (!hr[field] || hr[field]?.toString().trim() === "") {
         return NextResponse.json(
-          { success: false, message: `Missing required field: ${field}` },
+          { success: false, message: `Please complete your profile. The required field "${field}" is missing.` },
           { status: 400 }
         );
       }

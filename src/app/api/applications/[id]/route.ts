@@ -101,7 +101,7 @@ export async function PATCH(
           <tr>
             <td style="padding:20px 0;color:#ffffff;font-size:16px;line-height:1.6;">
               <p>We are excited to inform you that you’ve been <b>shortlisted</b> for the position of <b>${jobTitle}</b>.</p>
-              <p>Our HR team will contact you soon with the next steps in the recruitment process.</p>
+              <p>Please visit our website to <b>schedule your interview</b> and select your preferred time slot to proceed with the next steps in the recruitment process.</p>
             </td>
           </tr>
           <tr>

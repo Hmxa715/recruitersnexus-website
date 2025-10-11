@@ -235,7 +235,7 @@ const Applications: React.FC = () => {
             <div className="flex items-center justify-between">
               {/* Left: Job filter */}
               <div>
-                <label className="text-sm font-medium mr-2">
+                <label className="text-sm font-medium mr-2 text-white">
                   Filter by Job:
                 </label>
                 <select
@@ -364,9 +364,9 @@ const Applications: React.FC = () => {
             <button
               disabled={page === 1}
               onClick={() => setPage((p) => p - 1)}
-              className={`px-3 py-1 rounded border ${
+              className={`px-3 py-1 rounded border text-white ${
                 page === 1
-                  ? "opacity-50 cursor-not-allowed"
+                  ? "opacity-80 cursor-not-allowed"
                   : "hover:bg-gray-100"
               }`}
             >
@@ -378,9 +378,9 @@ const Applications: React.FC = () => {
             <button
               disabled={page === totalPages || totalPages === 0}
               onClick={() => setPage((p) => p + 1)}
-              className={`px-3 py-1 rounded border ${
+              className={`px-3 py-1 rounded border text-white ${
                 page === totalPages || totalPages === 0
-                  ? "opacity-50 cursor-not-allowed"
+                  ? "opacity-80 cursor-not-allowed"
                   : "hover:bg-gray-100"
               }`}
             >
