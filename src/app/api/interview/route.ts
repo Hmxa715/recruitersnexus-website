@@ -61,7 +61,7 @@ try {
     return NextResponse.json(
         {
         success: false,
-        message: "Invalid transaction status. Please contact support."
+        message: "Please pay the fee from our pricing plans to schedule your interview."
         },
         { status: 400 }
     );
