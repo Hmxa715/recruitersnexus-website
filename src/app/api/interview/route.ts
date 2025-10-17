@@ -21,8 +21,10 @@ try {
     .select()
     .from(transactions)
     .where(
+      and(
       eq(transactions.userId, data.user_id),
-       eq(transactions.status, 'success')
+      eq(transactions.status, 'success')
+    )
     )
       .orderBy(transactions.createdAt) // latest first
     .limit(1);
