@@ -20,10 +20,13 @@ try {
     const userTxn = await db
     .select()
     .from(transactions)
-    .where(eq(transactions.userId, data.user_id))
+    .where(
+      eq(transactions.userId, data.user_id),
+       eq(transactions.status, 'success')
+    )
       .orderBy(transactions.createdAt) // latest first
     .limit(1);
-
+    console.log("User Transaction:", userTxn);
     if (!userTxn.length) {
     return NextResponse.json(
         {
