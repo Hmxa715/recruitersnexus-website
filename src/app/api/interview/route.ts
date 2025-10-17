@@ -35,7 +35,8 @@ try {
         },
         { status: 400 }
     );
-    }
+    } 
+    
 
     const txn = userTxn[0];
     const txnStatus = txn.status?.toLowerCase();
